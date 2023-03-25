@@ -27,9 +27,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                double kilos_entered = Double.parseDouble(editText.getText().toString());
+                convertToPounds(kilos_entered);
 
             }
         });
+    }
+
+    public double convertToPounds(double kilos ){
+
+        double pounds_result= kilos*2.20462;
+        return pounds_result;
     }
 }
