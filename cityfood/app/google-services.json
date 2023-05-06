@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "280316163356",
+    "project_id": "cityfood-79715",
+    "storage_bucket": "cityfood-79715.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280316163356:android:d6f71c4f782265914536d9",
+        "android_client_info": {
+          "package_name": "devandroid.evandro.cityfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280316163356-2h3u7rb70dgmq5vvigmmenujn1saod82.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "devandroid.evandro.cityfood",
+            "certificate_hash": "8ef843216b716ca4754f075113cb4e34e0010a99"
+          }
+        },
+        {
+          "client_id": "280316163356-11gg44qd8bhs4hcqtd63qqtohci3l23m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHx3Kyj7dzFBsRcJdr-0414_sWlYH3yJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280316163356-11gg44qd8bhs4hcqtd63qqtohci3l23m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

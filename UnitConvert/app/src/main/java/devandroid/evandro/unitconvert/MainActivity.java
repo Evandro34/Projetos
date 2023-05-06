@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 double kilos_entered = Double.parseDouble(editText.getText().toString());
                 convertToPounds(kilos_entered);
 
-                result_text.setText(" "+ convertToPounds(kilos_entered));
+                result_text.setText(" "+ convertToPounds(kilos_entered)+" lb");
 
             }
         });
