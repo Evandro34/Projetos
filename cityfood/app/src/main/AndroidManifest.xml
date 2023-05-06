@@ -12,7 +12,13 @@
         android:theme="@style/Theme.Cityfood"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".RecuperarContaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

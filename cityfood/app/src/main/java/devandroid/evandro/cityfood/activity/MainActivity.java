@@ -1,8 +1,10 @@
-package devandroid.evandro.cityfood;
+package devandroid.evandro.cityfood.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import devandroid.evandro.cityfood.R;
 
 public class MainActivity extends AppCompatActivity {
 
