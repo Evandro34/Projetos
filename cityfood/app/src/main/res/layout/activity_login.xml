@@ -80,6 +80,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_edit"
                 android:text="Entrar"
+                android:onClick="validaDados"
                 android:textAllCaps="false"
                 android:textColor="@color/cor_principal"
                 android:textSize="16dp"
