@@ -17,4 +17,9 @@
     <style name="ThemeProgressBar" parent="Theme.Cityfood">
         <item name="colorAccent">@color/white</item>
     </style>
+
+    <style name="CustomStyleTabLayout" parent="Theme.Cityfood">
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>
