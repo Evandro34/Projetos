@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MeuProcedimentos"
         tools:targetApi="31">
         <activity
+            android:name=".CadastroUsuarioActivity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityCadastro"
             android:exported="false" />
         <activity

@@ -4,51 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cor_principal"
     tools:context=".MainActivity">
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="8dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btn_cadastro"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="201dp"
-            android:text="Cadastrar"
-            />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <Button
-            android:id="@+id/btn_relatorio_esus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Esus Relatorio"
-            />
 
-        <Button
-            android:id="@+id/btn_PAB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Relatorio Pab"
-             />
+            <android.widget.Button
+                android:id="@+id/btn_cad_procedimento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit"
+                android:text="Cadastrar Procedimentos "
+                android:textAllCaps="false"
+                android:textColor="@color/cor_principal"
+                android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/btn_relatorio_BPA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Relatorio BPA"
-             />
-    </LinearLayout>
+            <android.widget.Button
+                android:id="@+id/btn_relatorio_pab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit"
+                android:text="Relatório Pab"
+                android:textAllCaps="false"
+                android:textColor="@color/cor_principal"
+                android:textSize="16sp" />
+
+            <android.widget.Button
+                android:id="@+id/btn_relatorio_esus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit"
+                android:text="Relatório Esus"
+                android:textAllCaps="false"
+                android:textColor="@color/cor_principal"
+                android:textSize="16sp" />
+
+            <android.widget.Button
+                android:id="@+id/btn_relatorio_bpa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit"
+                android:text="Relatório Bpa"
+                android:textAllCaps="false"
+                android:textColor="@color/cor_principal"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
