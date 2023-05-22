@@ -1,5 +1,6 @@
 package devandroid.evandro.cityfood.model;
 
+
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
@@ -18,23 +19,21 @@ public class Usuario implements Serializable {
     private String senha;
 
     public Usuario() {
-
     }
 
-    public void salvar() {
-
-        DatabaseReference usuarioRef = FirebaseHelper.getDatabaseReference().child("usuarios").child(getId());
+    public void salvar(){
+        DatabaseReference usuarioRef = FirebaseHelper.getDatabaseReference()
+                .child("usuarios")
+                .child(getId());
         usuarioRef.setValue(this);
 
-        FirebaseUser firebaseUser = FirebaseHelper.getAuth().getCurrentUser();
+        FirebaseUser user = FirebaseHelper.getAuth().getCurrentUser();
         UserProfileChangeRequest perfil = new UserProfileChangeRequest.Builder()
                 .setDisplayName(getNome())
                 .build();
 
-       if(firebaseUser != null) firebaseUser.updateProfile(perfil);
-
+        if(user != null) user.updateProfile(perfil);
     }
-
 
     public String getId() {
         return id;

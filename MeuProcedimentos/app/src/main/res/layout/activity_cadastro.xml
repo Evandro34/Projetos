@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cor_principal"
-    tools:context=".ActivityCadastro">
+    tools:context=".activity.ActivityCadastro">
 
     <include
         android:id="@+id/include"
@@ -166,9 +166,7 @@
                     android:text="Local Atendimento"
                     android:textAlignment="center"
                     android:textSize="16sp" />
-
-
-               <Spinner
+                <Spinner
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"/>
 

@@ -12,13 +12,16 @@
         android:theme="@style/Theme.MeuProcedimentos"
         tools:targetApi="31">
         <activity
-            android:name=".CadastroUsuarioActivity"
+            android:name=".activity.EsusRelatorioActivity"
             android:exported="false" />
         <activity
-            android:name=".ActivityCadastro"
+            android:name=".activity.CadastroUsuarioActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.ActivityCadastro"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

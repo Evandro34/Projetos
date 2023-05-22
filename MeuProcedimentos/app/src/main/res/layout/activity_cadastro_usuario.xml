@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cor_principal"
-    tools:context=".CadastroUsuarioActivity">
+    tools:context=".activity.CadastroUsuarioActivity">
     <include
         android:id="@+id/include"
         layout="@layout/toolbar"
@@ -237,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_edit"
-                android:Text="Passa tempo"
+                android:text="Passa tempo"
                 android:padding="8dp"
                 android:textAlignment="center" />
             <TextView
@@ -270,6 +270,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/cor_principal"
                 android:textSize="16sp" />
+
+        </LinearLayout>
 
 
     </ScrollView>

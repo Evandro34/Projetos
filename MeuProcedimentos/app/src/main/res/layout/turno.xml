@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/txt_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit"
+                android:hint="09/05/2023"
+                android:padding="8dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/txt_turno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit"
+                android:hint="09/05/2023"
+                android:padding="8dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/txt_cpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit"
+                android:hint="09/05/2023"
+                android:padding="8dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/txt_data_nascimento_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit"
+                android:hint="09/05/2023"
+                android:padding="8dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/txt_local_atendimento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit"
+                android:hint="09/05/2023"
+                android:padding="8dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/txt_procedimentos_realizados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit"
+                android:hint="09/05/2023"
+                android:padding="8dp"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

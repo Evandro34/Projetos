@@ -14,8 +14,22 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_dialog_status</item>
+        <item name="android:windowMinWidthMinor">80%</item>
+    </style>
+
+    <style name="Theme.IfoodClone2" parent="Theme.Cityfood">
+        <item name="colorPrimaryVariant">@color/cor_principal</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
     <style name="ThemeProgressBar" parent="Theme.Cityfood">
         <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="ThemeProgressBar2" parent="Theme.Cityfood">
+        <item name="colorAccent">#FF0000</item>
     </style>
 
     <style name="CustomStyleTabLayout" parent="Theme.Cityfood">
@@ -23,13 +37,18 @@
         <item name="textAllCaps">false</item>
     </style>
 
-    <style name="ThemeProgressBar2" parent="Theme.Cityfood">
-        <item name="colorAccent">#FF0000</item>
+    <style name="ThemeBnvOn">
+        <item name="android:textSize">14sp</item>
     </style>
-    <style name="Theme.Cityfood.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
     </style>
-    <style name="Theme.Cityfood.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="Theme.Cityfood.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+
 </resources>

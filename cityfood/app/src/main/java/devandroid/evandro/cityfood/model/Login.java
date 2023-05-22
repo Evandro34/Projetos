@@ -1,5 +1,6 @@
 package devandroid.evandro.cityfood.model;
 
+
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
@@ -7,13 +8,12 @@ import java.io.Serializable;
 import devandroid.evandro.cityfood.helper.FirebaseHelper;
 
 public class Login implements Serializable {
+
     private String id;
     private String tipo;
     private Boolean acesso;
 
-
     public Login() {
-
     }
 
     public Login(String id, String tipo, Boolean acesso) {
@@ -23,12 +23,10 @@ public class Login implements Serializable {
     }
 
     public void salvar(){
-
         DatabaseReference loginRef = FirebaseHelper.getDatabaseReference()
                 .child("login")
                 .child(getId());
         loginRef.setValue(this);
-
     }
 
     public String getId() {

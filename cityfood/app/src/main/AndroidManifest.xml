@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -10,30 +13,41 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cityfood"
-        tools:targetApi="31" >
-        <activity
-            android:name=".activity.usuario.UsuarioHomeActivity"
-            android:exported="false"
-            android:label="@string/title_activity_usuario_home"
-            android:theme="@style/Theme.Cityfood.NoActionBar" />
-        <activity
-            android:name=".activity.usuario.UsuarioFinalizaCadastroActivity"
-            android:exported="false" />
+        tools:targetApi="31">
+        <activity android:name=".activity.usuario.PedidoDetalheActivity"></activity>
+        <activity android:name=".activity.usuario.UsuarioResumoPedidoActivity" />
+        <activity android:name=".activity.usuario.UsuarioSelecionaPagamentoActivity" />
+        <activity android:name=".activity.usuario.UsuarioSelecionaEnderecoActivity" />
+        <activity android:name=".activity.usuario.CarrinhoActivity" />
+        <activity android:name=".activity.empresa.EmpresaProdutoDetalhesActivity" />
+        <activity android:name=".activity.empresa.EmpresaCardapioActivity" />
+        <activity android:name=".activity.usuario.UsuarioFormEnderecoActivity" />
+        <activity android:name=".activity.empresa.EmpresaFormProdutoActivity" />
+        <activity android:name=".activity.empresa.EmpresaEntregasActivity" />
+        <activity android:name=".activity.empresa.EmpresaEnderecoActivity" />
+        <activity android:name=".activity.empresa.EmpresaAddMaisActivity" />
+        <activity android:name=".activity.empresa.EmpresaRecebimentosActivity" />
+        <activity android:name=".activity.empresa.EmpresaCategoriasActivity" />
+        <activity android:name=".activity.empresa.EmpresaConfigActivity" />
+        <activity android:name=".activity.usuario.UsuarioEnderecosActivity" />
+        <activity android:name=".activity.usuario.UsuarioFavoritosActivity" />
+        <activity android:name=".activity.usuario.UsuarioPerfilActivity" />
+        <activity android:name=".activity.empresa.EmpresaHomeActivity" />
+        <activity android:name=".activity.empresa.EmpresaFinalizaCadastroActivity" />
+        <activity android:name= ".activity.usuario.UsuarioHomeActivity" />
+
         <activity
             android:name=".activity.autenticacao.CriarContaActivity"
-            android:exported="false" />
+            android:theme="@style/Theme.Cityfood" />
         <activity
             android:name=".activity.autenticacao.RecuperarContaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SplashActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.MainActivity"
-            android:exported="false" />
+            android:theme="@style/Theme.Cityfood" />
         <activity
             android:name=".activity.autenticacao.LoginActivity"
-            android:exported="true" >
+            android:theme="@style/Theme.Cityfood" />
+        <activity
+            android:name=".activity.app.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

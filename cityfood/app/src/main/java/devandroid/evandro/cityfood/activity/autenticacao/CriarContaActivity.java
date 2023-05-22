@@ -1,19 +1,18 @@
 package devandroid.evandro.cityfood.activity.autenticacao;
 
+
+import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.TableLayout;
-import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
 import devandroid.evandro.cityfood.R;
-import devandroid.evandro.cityfood.adpater.ViewPagerAdapter;
-import devandroid.evandro.cityfood.fragments.EmpresaFragment;
-import devandroid.evandro.cityfood.fragments.UsuarioFragment;
+import devandroid.evandro.cityfood.adapter.ViewPagerAdapter;
+import devandroid.evandro.cityfood.fragment.empresa.EmpresaFragment;
+import devandroid.evandro.cityfood.fragment.usuario.UsuarioFragment;
 
 public class CriarContaActivity extends AppCompatActivity {
 
