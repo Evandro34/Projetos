@@ -9,7 +9,8 @@
     tools:context=".activity.ProcedimentosActivity">
 
     <include layout="@layout/toolbar"
-        android:id="@+id/include" />
+        android:id="@+id/include_proc"
+        />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"

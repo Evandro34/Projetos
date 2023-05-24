@@ -12,6 +12,9 @@
         android:theme="@style/Theme.ProcedimentosEsfTecnico"
         tools:targetApi="31">
         <activity
+            android:name=".activity.EnderecoActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.CadPacienteActivity"
             android:exported="false" />
         <activity
