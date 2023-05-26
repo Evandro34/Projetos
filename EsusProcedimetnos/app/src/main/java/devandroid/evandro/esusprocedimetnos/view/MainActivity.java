@@ -1,8 +1,10 @@
-package devandroid.evandro.esusprocedimetnos;
+package devandroid.evandro.esusprocedimetnos.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import devandroid.evandro.esusprocedimetnos.R;
 
 public class MainActivity extends AppCompatActivity {
 
