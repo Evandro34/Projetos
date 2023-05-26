@@ -1,14 +1,14 @@
-package devandroid.evandro.myapplication;
+package devandroid.evandro.esusprocedimetnos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class TerceiraActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_terceira);
+        setContentView(R.layout.activity_main);
     }
 }
