@@ -45,12 +45,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String sqlConsulta = "CREATE TABLE IF NOT EXISTS " + TB_CONSULTA+
         "(idConsulta    INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " cnsPaciente   TEXT," +
+                "fkcnsPaciente   TEXT," +
                 "data          TEXT, " +
                 "turno         TEXT, " +
                 "local         TEXT, " +
                 "procedimentos TEXT, " +
-                " FOREIGN KEY (cnsPaciente) REFERENCES "
+                " FOREIGN KEY (fkcnsPaciente) REFERENCES "
                 + TB_PACIENTE +
                 " (cpfCns));";
 

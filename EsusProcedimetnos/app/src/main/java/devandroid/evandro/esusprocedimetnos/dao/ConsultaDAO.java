@@ -35,7 +35,7 @@ public class ConsultaDAO {
             //write.close();
 
         }catch (Exception e){
-            Log.i("ERROR","Erro a salvar produto"+e.getMessage());
+            Log.i("ERROR","Erro a salvar Consulta"+e.getMessage());
         }
 
     }
