@@ -12,13 +12,13 @@
         android:theme="@style/Theme.EsusProcedimetnos"
         tools:targetApi="31">
         <activity
-            android:name=".CadastrarPacienteActivity"
+            android:name=".view.CadastrarPacienteActivity"
             android:exported="false" />
         <activity
-            android:name=".CadastrarProcedimentosActivity"
+            android:name=".view.CadastrarProcedimentosActivity"
             android:exported="false" />
         <activity
-            android:name=".ListarProcedimentosActivity"
+            android:name=".view.ListarProcedimentosActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"
