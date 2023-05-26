@@ -1,6 +1,6 @@
 package devandroid.evandro.esusprocedimetnos.model;
 
-public class Endereco {
+public class Endereco extends Paciente {
 
      private String fkCpfEndereco;
      private String logradouro;

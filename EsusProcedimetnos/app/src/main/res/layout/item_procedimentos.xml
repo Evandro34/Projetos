@@ -37,6 +37,14 @@
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/txt_data_nascimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit"
+            android:layout_marginTop="4dp"
+            android:padding="16dp"
+            android:text="TextView" />
+        <TextView
             android:id="@+id/txt_cpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

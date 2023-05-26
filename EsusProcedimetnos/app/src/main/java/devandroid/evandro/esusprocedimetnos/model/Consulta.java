@@ -1,6 +1,6 @@
 package devandroid.evandro.esusprocedimetnos.model;
 
-public class Consulta {
+public class Consulta extends Paciente{
     private int IdConsulta;
     private String cnsPaciente;
     private String data;
