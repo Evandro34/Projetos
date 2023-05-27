@@ -29,7 +29,7 @@
             android:padding="16dp">
 
             <EditText
-                android:id="@+id/edt_cpf_endereco"
+                android:id="@+id/et_cpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -39,23 +39,23 @@
                 android:padding="16dp" />
 
             <EditText
-                android:id="@+id/edt_nome_endereco"
+                android:id="@+id/et_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:drawablePadding="16dp"
                 android:background="@drawable/bg_edit"
-                android:hint="Nome"
+                android:text="Nome"
                 android:inputType="text"
                 android:padding="16dp" />
             <EditText
-                android:id="@+id/edt_data_nascimento_endereco"
+                android:id="@+id/et_data_nascimento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:drawablePadding="16dp"
                 android:background="@drawable/bg_edit"
-                android:hint="data nascimento"
+                android:text="data nascimento"
                 android:inputType="date"
                 android:padding="16dp" />
 
@@ -192,7 +192,7 @@
 
 
             <EditText
-                android:id="@+id/edt_endereco"
+                android:id="@+id/et_endereco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -203,7 +203,7 @@
                 android:padding="16dp" />
 
             <EditText
-                android:id="@+id/edt_Numero"
+                android:id="@+id/et_Numero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -237,7 +237,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/txt_cidade"
+                android:id="@+id/tv_cidade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -246,7 +246,7 @@
                 android:padding="8dp"
                 android:textAlignment="center" />
             <TextView
-                android:id="@+id/txt_estado"
+                android:id="@+id/tv_estado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -255,7 +255,7 @@
                 android:padding="8dp"
                 android:textAlignment="center" />
             <TextView
-                android:id="@+id/txt_cep"
+                android:id="@+id/tv_cep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
