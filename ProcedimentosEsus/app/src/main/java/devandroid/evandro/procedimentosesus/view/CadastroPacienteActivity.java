@@ -12,15 +12,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import devandroid.evandro.procedimentosesus.R;
+import devandroid.evandro.procedimentosesus.controller.EnderecoController;
+import devandroid.evandro.procedimentosesus.controller.PacienteController;
+import devandroid.evandro.procedimentosesus.model.Endereco;
+import devandroid.evandro.procedimentosesus.model.Paciente;
 
 public class CadastroPacienteActivity extends AppCompatActivity {
 
-    EditText edt_cpf, edt_nome, edt_data_nascimento, edt_endereco, edt_Numero;
-    RadioGroup rg_sexo, rg_cor;
-    TextView txt_cidade, txt_estado, txt_cep;
-    RadioButton rb_masculino, rb_feminino, rb_branco, rb_preto, rb_pardo;
-    Spinner sp_logradouro, sp_Bairro;
-    Button btn_salvar_dados;
+    private EditText edt_cpf, edt_nome, edt_data_nascimento, edt_endereco, edt_Numero;
+    private RadioGroup rg_sexo, rg_cor;
+    private TextView txt_cidade, txt_estado, txt_cep;
+    private RadioButton rb_masculino, rb_feminino, rb_branco, rb_preto, rb_pardo;
+    private Spinner sp_logradouro, sp_Bairro;
+    private Button btn_salvar_dados;
+
+
+    private PacienteController pacienteController;
+    private EnderecoController enderecoController;
 
 
 
@@ -28,6 +36,9 @@ public class CadastroPacienteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_paciente);
+
+        pacienteController = new PacienteController(this);
+        enderecoController = new EnderecoController(this);
 
         iniciaComponente();
         cliqueBotao();
@@ -94,9 +105,6 @@ public class CadastroPacienteActivity extends AppCompatActivity {
 
 
 
-
-            //Toast.makeText(this,"Selecionou "+cpf+" "+nome+" " +dn ,Toast.LENGTH_LONG).show();
-
             String cpf = edt_cpf.getText().toString();
             String nome = edt_nome.getText().toString();
             String dn = edt_data_nascimento.getText().toString();
@@ -109,6 +117,31 @@ public class CadastroPacienteActivity extends AppCompatActivity {
             String cidade = txt_cidade.getText().toString();
             String estado = txt_estado.getText().toString();
             String cep = txt_cep.getText().toString();
+
+            Paciente paciente = new Paciente();
+            Endereco endereco = new Endereco();
+            paciente.setCpf(cpf);
+            paciente.setNome(nome);
+            paciente.setData_nascimento(dn);
+            paciente.setSexo(sexo);
+            paciente.setCor(cor);
+            endereco.setFkCpfEndereco(cpf);
+            endereco.setLogradouro(lougradouro);
+            endereco.setEndereco(enderec);
+            endereco.setNumero(numero);
+            endereco.setBairro(bairro);
+            endereco.setCidade(cidade);
+            endereco.setEstado(estado);
+            endereco.setCep(cep);
+
+
+
+            pacienteController.salvarPaciente(paciente);
+            enderecoController.salvarEndereco(endereco);
+
+
+
+
 
 
 

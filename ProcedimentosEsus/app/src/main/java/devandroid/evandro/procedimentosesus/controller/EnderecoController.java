@@ -8,13 +8,13 @@ import android.util.Log;
 import devandroid.evandro.procedimentosesus.dataModel.EnderecoDM;
 import devandroid.evandro.procedimentosesus.model.Endereco;
 
-public class EnderecoContoller {
+public class EnderecoController {
 
 
     private final SQLiteDatabase write;
     private final SQLiteDatabase read;
 
-    public EnderecoContoller(Context context) {
+    public EnderecoController(Context context) {
         DBHelper dbHelper = new DBHelper(context);
         this.write = dbHelper.getWritableDatabase();
         this.read = dbHelper.getReadableDatabase();
