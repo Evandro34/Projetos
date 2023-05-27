@@ -1,66 +1,104 @@
 package devandroid.evandro.procedimentosesus.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import devandroid.evandro.procedimentosesus.R;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NoiteFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import devandroid.evandro.procedimentosesus.R;
+import devandroid.evandro.procedimentosesus.adapater.ManhaAdapter;
+import devandroid.evandro.procedimentosesus.adapater.NoiteAdapter;
+import devandroid.evandro.procedimentosesus.model.Consulta;
+
 public class NoiteFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private List<Consulta> consultaList = new ArrayList<>();
 
-    public NoiteFragment() {
-        // Required empty public constructor
-    }
+    private NoiteAdapter noiteAdapter;
+    private RecyclerView rv_noite;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NoiteFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NoiteFragment newInstance(String param1, String param2) {
-        NoiteFragment fragment = new NoiteFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_noite, container, false);
+       View view = inflater.inflate(R.layout.fragment_noite, container, false);
+
+       rv_noite = view.findViewById(R.id.rv_noite);
+       carregaLista();
+       configRecyclerView();
+
+       return  view;
     }
+    private void configRecyclerView(){
+
+
+
+       rv_noite.setLayoutManager(new LinearLayoutManager(getContext()));
+       rv_noite.setHasFixedSize(true);
+
+       noiteAdapter= new NoiteAdapter(consultaList);
+       rv_noite.setAdapter(noiteAdapter);
+
+
+
+
+
+    }
+
+    private void carregaLista(){
+
+        Consulta produto1 = new Consulta();
+        produto1.setData("02/05/2020");
+        produto1.setTurno("NOITE");
+        produto1.setCnsPaciente("11111111111111");
+       // produto1.setData_nascimento("09/06/2024");
+        produto1.setLocal("1-USB");
+        produto1.setProcedimentos("CURATIVO-222222\nGlicemia - 11111111\nPA - 3333333");
+
+        Consulta produto2 = new Consulta();
+        produto2.setData("02/05/2020");
+        produto2.setTurno("NOITE");
+        produto2.setCnsPaciente("22222222222222");
+       // produto2.setData_nascimento("09/06/2024");
+        produto2.setLocal("1-USB");
+        produto2.setProcedimentos("CURATIVO-222222\nGlicemia - 11111111\nPA - 3333333");
+
+
+        Consulta produto3 = new Consulta();
+        produto3.setData("02/05/2020");
+        produto3.setTurno("NOITE");
+        produto3.setCnsPaciente("22222222222222");
+        //produto3.setData_nascimento("09/06/2024");
+        produto3.setLocal("1-USB");
+        produto3.setProcedimentos("CURATIVO-222222\nGlicemia - 11111111\nPA - 3333333");
+
+
+        consultaList.add(produto1);
+        consultaList.add(produto2);
+        consultaList.add(produto3);
+    }
+
+
+
+
+
 }

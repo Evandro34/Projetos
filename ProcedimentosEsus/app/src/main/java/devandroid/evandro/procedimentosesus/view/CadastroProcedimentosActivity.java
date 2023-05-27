@@ -16,7 +16,7 @@ import devandroid.evandro.procedimentosesus.R;
 
 public class CadastroProcedimentosActivity extends AppCompatActivity {
 
-    private TextView tv_data_atual, tv_nome, tv_data_nascimento, tv_sexo;
+    private TextView  tv_nome, tv_data_nascimento, tv_sexo;
     private RadioGroup rg_turno;
     private RadioButton rb_manha, rb_tarde, rb_noite;
     private EditText et_cpf;
@@ -41,7 +41,7 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
         text_toolbar.setText("CADASTRO PROCEDIMENTOS");
         text_toolbar.setTextSize(18);
 
-        tv_data_atual = findViewById(R.id.tv_data_atual);
+
         tv_nome = findViewById(R.id.tv_nome);
         tv_data_nascimento = findViewById(R.id.tv_data_nascimento);
         tv_sexo = findViewById(R.id.tv_sexo);

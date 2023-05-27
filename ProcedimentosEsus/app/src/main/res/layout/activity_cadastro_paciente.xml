@@ -7,13 +7,41 @@
     android:background="@color/cor_principal"
     tools:context=".view.CadastroPacienteActivity">
 
-
     <include
-        android:id="@+id/include"
+        android:id="@+id/include2"
         layout="@layout/toolbar_voltar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Atual"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2" />
+
+    <TextView
+        android:id="@+id/txt_data_atual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_edit"
+        android:hint="09/05/2023"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_data" />
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -21,8 +49,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include">
-
+        app:layout_constraintTop_toBottomOf="@+id/txt_data_atual">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,23 +71,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:drawablePadding="16dp"
                 android:background="@drawable/bg_edit"
+                android:drawablePadding="16dp"
                 android:hint="Nome"
                 android:inputType="text"
                 android:padding="16dp" />
+
             <EditText
                 android:id="@+id/edt_data_nascimento_endereco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:drawablePadding="16dp"
                 android:background="@drawable/bg_edit"
+                android:drawablePadding="16dp"
                 android:hint="data nascimento"
                 android:inputType="date"
                 android:padding="16dp" />
-
-
 
 
             <LinearLayout
@@ -103,9 +129,7 @@
                         android:text="Feminino" />
 
 
-
                 </RadioGroup>
-
 
 
             </LinearLayout>
@@ -158,9 +182,7 @@
                         android:text="pardo" />
 
 
-
                 </RadioGroup>
-
 
 
             </LinearLayout>
@@ -184,9 +206,9 @@
 
                 <Spinner
                     android:id="@+id/sp_logradouro"
-                    android:textAlignment="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:textAlignment="center" />
 
 
             </LinearLayout>
@@ -213,6 +235,7 @@
                 android:hint="Numero"
                 android:inputType="number"
                 android:padding="16dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -232,7 +255,7 @@
                 <Spinner
                     android:id="@+id/sp_Bairro"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
 
 
             </LinearLayout>
@@ -243,26 +266,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_edit"
-                android:text="Passa tempo"
                 android:padding="8dp"
+                android:text="Passa tempo"
                 android:textAlignment="center" />
+
             <TextView
                 android:id="@+id/txt_estado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_edit"
-                android:text="Minas Gerais"
                 android:padding="8dp"
+                android:text="Minas Gerais"
                 android:textAlignment="center" />
+
             <TextView
                 android:id="@+id/txt_cep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_edit"
-                android:text="35537000"
                 android:padding="8dp"
+                android:text="35537000"
                 android:textAlignment="center" />
 
 
