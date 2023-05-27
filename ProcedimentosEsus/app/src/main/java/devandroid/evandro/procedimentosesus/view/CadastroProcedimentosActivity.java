@@ -13,6 +13,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import devandroid.evandro.procedimentosesus.R;
+import devandroid.evandro.procedimentosesus.controller.ConsultaController;
+import devandroid.evandro.procedimentosesus.model.Consulta;
 
 public class CadastroProcedimentosActivity extends AppCompatActivity {
 
@@ -26,10 +28,14 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
             cb_curativo, cb_r_de_pontos, cb_visita, cb_covid, cb_hep_c, cb_hiv, cb_dengue, cb_hep_b, cb_sifilis;
     private Button btn_busca_paciente, btn_cadastrar_paciente;
 
+    private ConsultaController consultaController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_procedimentos);
+
+        consultaController = new ConsultaController(this);
 
         iniciaComponente();
         cliqueBotao();
@@ -82,6 +88,29 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
         btn_busca_paciente.setOnClickListener(view -> {
             Intent intent = new Intent(this, CadastroPacienteActivity.class);
             startActivity(intent);
+        });
+        btn_cadastrar_paciente.setOnClickListener(view -> {
+
+            String a [] ={"Curativo - 111111111","Glicemia - 22222222","Peso - 33333333","ALTURA - 444444"};
+
+            for (String procedimentos:a) {
+                Consulta consulta = new Consulta();
+                consulta.setCnsPaciente("1");
+                consulta.setData("09/05/1987");
+                consulta.setTurno("noite");
+                consulta.setLocal("1-UBS");
+                consulta.setProcedimentos(procedimentos);
+
+                consultaController.salvarConsulta(consulta);
+            }
+
+
+
+
+
+
+           // Intent intent = new Intent(this, ListarProcedimentoActivity.class);
+           // startActivity(intent);
         });
     }
 }
