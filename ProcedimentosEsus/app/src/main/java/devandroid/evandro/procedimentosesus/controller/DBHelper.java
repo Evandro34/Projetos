@@ -7,6 +7,11 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import devandroid.evandro.procedimentosesus.dataModel.ConsultaDM;
+import devandroid.evandro.procedimentosesus.dataModel.EnderecoDM;
+import devandroid.evandro.procedimentosesus.dataModel.PacienteDM;
+import devandroid.evandro.procedimentosesus.model.Consulta;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final int VERSAO =1;
@@ -19,20 +24,31 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        String sql = "CREATE TABLE IF NOT EXISTS "+TB_PRODUTO +
-                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nome TEXT NOT NULL, " +
-                "estoque INTEGER NOT NULL, " +
-                "valor DOUBLE NOT NULL );";
+
 
         try {
 
-            sqLiteDatabase.execSQL(sql);
+            sqLiteDatabase.execSQL(PacienteDM.gerarTabela());
 
         }catch (Exception e){
             Log.i("ERROR","Erro a criar Tabela"+e.getMessage());
         }
 
+        try {
+
+            sqLiteDatabase.execSQL(EnderecoDM.gerarTabela());
+
+        }catch (Exception e){
+            Log.i("ERROR","Erro a criar Tabela"+e.getMessage());
+        }
+
+        try {
+
+            sqLiteDatabase.execSQL(ConsultaDM.gerarTabela());
+
+        }catch (Exception e){
+            Log.i("ERROR","Erro a criar Tabela"+e.getMessage());
+        }
 
     }
 
