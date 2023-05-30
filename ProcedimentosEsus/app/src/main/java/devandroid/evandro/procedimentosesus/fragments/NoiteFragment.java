@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,88 +18,65 @@ import java.util.List;
 import devandroid.evandro.procedimentosesus.R;
 import devandroid.evandro.procedimentosesus.adapater.ManhaAdapter;
 import devandroid.evandro.procedimentosesus.adapater.NoiteAdapter;
+import devandroid.evandro.procedimentosesus.controller.ConsultaController;
 import devandroid.evandro.procedimentosesus.model.Consulta;
 
 public class NoiteFragment extends Fragment {
 
 
-    private List<Consulta> consultaList = new ArrayList<>();
+    private List<Consulta> consultaList;
+
+    private ConsultaController consultaController;
 
     private NoiteAdapter noiteAdapter;
     private RecyclerView rv_noite;
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view = inflater.inflate(R.layout.fragment_noite, container, false);
+        View view = inflater.inflate(R.layout.fragment_noite, container, false);
 
-       rv_noite = view.findViewById(R.id.rv_noite);
-       carregaLista();
-       configRecyclerView();
+        rv_noite = view.findViewById(R.id.rv_noite);
 
-       return  view;
-    }
-    private void configRecyclerView(){
+        consultaController = new ConsultaController(getContext());
 
+        configRecyclerView();
 
-
-       rv_noite.setLayoutManager(new LinearLayoutManager(getContext()));
-       rv_noite.setHasFixedSize(true);
-
-       noiteAdapter= new NoiteAdapter(consultaList);
-       rv_noite.setAdapter(noiteAdapter);
-
-
-
-
-
+        return view;
     }
 
-    private void carregaLista(){
-
-        Consulta produto1 = new Consulta();
-        produto1.setData("02/05/2020");
-        produto1.setTurno("NOITE");
-        produto1.setCnsPaciente("11111111111111");
-       // produto1.setData_nascimento("09/06/2024");
-        produto1.setLocal("1-USB");
-        produto1.setProcedimentos("CURATIVO-222222\nGlicemia - 11111111\nPA - 3333333");
-
-        Consulta produto2 = new Consulta();
-        produto2.setData("02/05/2020");
-        produto2.setTurno("NOITE");
-        produto2.setCnsPaciente("22222222222222");
-       // produto2.setData_nascimento("09/06/2024");
-        produto2.setLocal("1-USB");
-        produto2.setProcedimentos("CURATIVO-222222\nGlicemia - 11111111\nPA - 3333333");
+    private void configRecyclerView() {
 
 
-        Consulta produto3 = new Consulta();
-        produto3.setData("02/05/2020");
-        produto3.setTurno("NOITE");
-        produto3.setCnsPaciente("22222222222222");
-        //produto3.setData_nascimento("09/06/2024");
-        produto3.setLocal("1-USB");
-        produto3.setProcedimentos("CURATIVO-222222\nGlicemia - 11111111\nPA - 3333333");
+        rv_noite.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv_noite.setHasFixedSize(true);
+        getCpf("09/05/1987");
+        noiteAdapter = new NoiteAdapter(consultaList);
+        rv_noite.setAdapter(noiteAdapter);
 
 
-        consultaList.add(produto1);
-        consultaList.add(produto2);
-        consultaList.add(produto3);
     }
 
 
+    private void getCpf(String data) {
 
+        List<Consulta> consultas = new ArrayList<>();
+
+        for (Consulta consulta : consultaController.getCpf(data)
+        ) {
+            consultaController.getProcedimentos(consulta.getCnsPaciente());
+            Consulta consulta1 = new Consulta();
+            consulta1.setData(consulta.getData());
+            consulta1.setTurno(consulta.getTurno());
+            consulta1.setLocal(consulta.getLocal());
+            consulta1.setCnsPaciente(consulta.getCnsPaciente());
+            consultas.add(consulta1);
+        }
+        consultaList=consultas;
+
+    }
 
 
 }

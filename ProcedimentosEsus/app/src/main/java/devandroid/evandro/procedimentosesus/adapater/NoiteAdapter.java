@@ -37,7 +37,7 @@ public class NoiteAdapter extends RecyclerView.Adapter<NoiteAdapter.MyViewHolder
         holder.tv_cpf.setText(consulta.getCnsPaciente());
         holder.tv_data_nascimento.setText(consulta.getData_nascimento());
         holder.tv_local.setText(consulta.getLocal());
-        holder.tv_procedimentos.setText(consulta.getProcedimentos());
+        //holder.tv_procedimentos.setText(consulta.getProcedimentos());
 
 
 

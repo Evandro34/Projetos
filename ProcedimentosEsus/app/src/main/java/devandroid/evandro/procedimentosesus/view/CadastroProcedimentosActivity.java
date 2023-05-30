@@ -95,7 +95,7 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
 
             for (String procedimentos:a) {
                 Consulta consulta = new Consulta();
-                consulta.setCnsPaciente("1");
+                consulta.setCnsPaciente(et_cpf.getText().toString());
                 consulta.setData("09/05/1987");
                 consulta.setTurno("noite");
                 consulta.setLocal("1-UBS");

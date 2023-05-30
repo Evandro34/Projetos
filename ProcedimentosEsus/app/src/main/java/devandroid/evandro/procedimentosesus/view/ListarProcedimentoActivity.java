@@ -50,7 +50,6 @@ public class ListarProcedimentoActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new NoiteFragment(), "Noite");
 
         view_pager.setAdapter(viewPagerAdapter);
-
         tab_layout.setElevation(0);
         tab_layout.setupWithViewPager(view_pager);
     }
