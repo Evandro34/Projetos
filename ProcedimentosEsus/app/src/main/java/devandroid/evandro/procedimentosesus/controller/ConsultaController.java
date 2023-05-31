@@ -58,11 +58,12 @@ public class ConsultaController {
      *
      * @return
      */
-    public List<Consulta> getCpf(String data) {
+    public List<Consulta> getCpf(String data,String turno) {
 
         List<Consulta> consultaList = new ArrayList<>();
 
-        String buscarCpf = "SELECT DISTINCT " + ConsultaDM.FKCPF + " FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.DATA + " = " + "'" + data + "'";
+        String buscarCpf = "SELECT DISTINCT " + ConsultaDM.FKCPF + " FROM " +
+                ConsultaDM.TABELA + " WHERE " + ConsultaDM.DATA + " = " + "'" + data + "'"+" AND " + ConsultaDM.TURNO + " = " + "'"+turno+"'";
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
 
@@ -82,13 +83,13 @@ public class ConsultaController {
      *
      * @return
      */
-    public Consulta getTODOS(String cpf1) {
+    public Consulta getTODOS(String cpf1,String sTurno) {
 
         //"SELECT  DISTINCT fkcpfPaciente, datanascimento,sexo,turno, data, local FROM consulta INNER JOIN paciente ON fkcpfPaciente = cpf where fkcpfPaciente = '1' and  turno  ='noite'";
 
         String buscarCpf = "SELECT  " + ConsultaDM.FKCPF + ", " + ConsultaDM.TURNO + ", " + ConsultaDM.DATA + ", " + PacienteDM.DATA_NASCIMENTO + ", " + ConsultaDM.LOCAL +
                 " FROM " + ConsultaDM.TABELA + " INNER JOIN " + PacienteDM.TABELA + " ON " + ConsultaDM.FKCPF + " = " + PacienteDM.CPF + " WHERE  "
-                + ConsultaDM.FKCPF + " = " + "'" + cpf1 + "'" + " AND " + ConsultaDM.TURNO + " = " + " 'noite' ";
+                + ConsultaDM.FKCPF + " = " + "'" + cpf1 + "'"+" AND " + ConsultaDM.TURNO + " = " + "'"+sTurno+"'";
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
         Consulta consulta = new Consulta();
@@ -112,7 +113,7 @@ public class ConsultaController {
             paciente.setData_nascimento(dn);
             consulta.setData_nascimento(paciente.getData_nascimento());
             consulta.setLocal(local);
-            consulta.setProcedimentos(listProcediemntos(cpf, data));
+            consulta.setProcedimentos(listProcediemntos(cpf, data,turno));
 
 
         }
@@ -125,10 +126,10 @@ public class ConsultaController {
      *
      * @return
      */
-    private String listProcediemntos(String cpfs, String data) {
+    private String listProcediemntos(String cpfs, String data,String turno) {
 
 
-        String buscarCpf = "SELECT " + ConsultaDM.PROCEDIMENTO + " FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.FKCPF + "=" + "'" + cpfs + "'" + " AND " + ConsultaDM.DATA + " = " + "'" + data + "'";
+        String buscarCpf = "SELECT " + ConsultaDM.PROCEDIMENTO + " FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.FKCPF + "=" + "'" + cpfs + "'" + " AND " + ConsultaDM.DATA + " = " + "'" + data + "'"+" AND " + ConsultaDM.TURNO + " = " + "'"+turno+"'";;
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
         String procedimentos = "";

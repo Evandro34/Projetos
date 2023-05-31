@@ -97,11 +97,19 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
                 Consulta consulta = new Consulta();
                 consulta.setCnsPaciente(et_cpf.getText().toString());
                 consulta.setData("09/05/1987");
-                consulta.setTurno("noite");
+                consulta.setTurno("manha");
                 consulta.setLocal("1-UBS");
                 consulta.setProcedimentos(procedimentos);
 
+                Consulta consulta1 = new Consulta();
+                consulta1.setCnsPaciente(et_cpf.getText().toString());
+                consulta1.setData("09/05/1987");
+                consulta1.setTurno("tarde");
+                consulta1.setLocal("1-UBS");
+                consulta1.setProcedimentos(procedimentos);
+
                 consultaController.salvarConsulta(consulta);
+                consultaController.salvarConsulta(consulta1);
             }
 
 

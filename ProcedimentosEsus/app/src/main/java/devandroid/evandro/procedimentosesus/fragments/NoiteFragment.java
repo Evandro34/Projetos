@@ -67,14 +67,14 @@ public class NoiteFragment extends Fragment {
 
         List<String> cpf = new ArrayList<>();
 
-        for (Consulta consulta : consultaController.getCpf(data)
+        for (Consulta consulta : consultaController.getCpf(data,"noite")
         ) {
             cpf.add(consulta.getCnsPaciente());
         }
 
         for (int i=0;i< cpf.size();i++){
 
-            consultas.add(consultaController.getTODOS(cpf.get(i)));
+            consultas.add(consultaController.getTODOS(cpf.get(i),"noite"));
         }
 
         return consultas;
