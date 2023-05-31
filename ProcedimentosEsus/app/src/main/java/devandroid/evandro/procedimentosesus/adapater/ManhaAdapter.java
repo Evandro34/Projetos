@@ -36,6 +36,7 @@ public class ManhaAdapter extends RecyclerView.Adapter<ManhaAdapter.MyViewHolder
         holder.tv_turno.setText(consulta.getTurno());
         holder.tv_cpf.setText(consulta.getCnsPaciente());
         holder.tv_data_nascimento.setText(consulta.getData_nascimento());
+        holder.tv_sexo.setText(consulta.getSexo());
         holder.tv_local.setText(consulta.getLocal());
         holder.tv_procedimentos.setText(consulta.getProcedimentos());
 
@@ -51,7 +52,7 @@ public class ManhaAdapter extends RecyclerView.Adapter<ManhaAdapter.MyViewHolder
     class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView tv_data,tv_turno,tv_cpf,
-                tv_data_nascimento,tv_local,tv_procedimentos;
+                tv_data_nascimento,tv_sexo,tv_local,tv_procedimentos;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +60,7 @@ public class ManhaAdapter extends RecyclerView.Adapter<ManhaAdapter.MyViewHolder
             tv_turno =itemView.findViewById(R.id.tv_turno);
             tv_cpf =itemView.findViewById(R.id.tv_cpf);
             tv_data_nascimento =itemView.findViewById(R.id.tv_data_nascimento);
+            tv_sexo =itemView.findViewById(R.id.tv_sexo);
             tv_local =itemView.findViewById(R.id.tv_local);
             tv_procedimentos=itemView.findViewById(R.id.tv_procedimentos);
         }

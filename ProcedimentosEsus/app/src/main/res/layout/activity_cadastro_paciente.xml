@@ -14,32 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Data Atual"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2" />
 
-    <TextView
-        android:id="@+id/txt_data_atual"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_edit"
-        android:hint="09/05/2023"
-        android:padding="16dp"
-        android:layout_margin="16dp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_data" />
 
 
     <ScrollView
@@ -49,7 +24,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_data_atual">
+        app:layout_constraintTop_toBottomOf="@+id/include2">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,15 +92,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:onClick="onRadioButtonClicked"
-                        android:text="Masculino" />
+                        android:checked="false"
+                        android:text="masculino" />
 
                     <RadioButton
                         android:id="@+id/rb_feminino"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:onClick="onRadioButtonClicked"
+                        android:checked="false"
                         android:text="Feminino" />
 
 
@@ -162,7 +137,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:onClick="onRadioButtonClicked"
+                        android:checked="false"
                         android:text="branco" />
 
                     <RadioButton
@@ -170,7 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:onClick="onRadioButtonClicked"
+                        android:checked="false"
                         android:text="preto" />
 
                     <RadioButton
@@ -178,7 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:onClick="onRadioButtonClicked"
+                        android:checked="false"
                         android:text="pardo" />
 
 
@@ -200,15 +175,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Logradouro"
+                    android:padding="16dp"
                     android:textAlignment="center"
                     android:textSize="16sp" />
 
 
                 <Spinner
                     android:id="@+id/sp_logradouro"
+                    android:padding="16dp"
+                    android:layout_margin="8dp"
+                    android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textAlignment="center" />
+                     />
 
 
             </LinearLayout>
@@ -222,7 +201,7 @@
                 android:background="@drawable/bg_edit"
                 android:drawablePadding="16dp"
                 android:hint="Endereço"
-                android:inputType="number"
+                android:inputType="text"
                 android:padding="16dp" />
 
             <EditText
@@ -248,12 +227,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Bairro"
+                    android:padding="16dp"
                     android:textAlignment="center"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"/>
 
 
                 <Spinner
                     android:id="@+id/sp_Bairro"
+                    android:padding="16dp"
+                    android:textSize="16sp"
+                    android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 

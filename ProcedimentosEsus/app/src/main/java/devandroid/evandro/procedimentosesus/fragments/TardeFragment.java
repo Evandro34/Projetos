@@ -17,6 +17,7 @@ import devandroid.evandro.procedimentosesus.R;
 import devandroid.evandro.procedimentosesus.adapater.ManhaAdapter;
 import devandroid.evandro.procedimentosesus.adapater.NoiteAdapter;
 import devandroid.evandro.procedimentosesus.adapater.TardeAdapter;
+import devandroid.evandro.procedimentosesus.api.AppUtil;
 import devandroid.evandro.procedimentosesus.controller.ConsultaController;
 import devandroid.evandro.procedimentosesus.model.Consulta;
 
@@ -48,8 +49,8 @@ public class TardeFragment extends Fragment {
 
         rv_tarde.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_tarde.setHasFixedSize(true);
-        getCpf("09/05/1987").clear();
-        consultaList=getCpf("09/05/1987");
+        getCpf(AppUtil.getDataAtual()).clear();
+        consultaList=getCpf(AppUtil.getDataAtual());
         tardeAdapter = new TardeAdapter(consultaList);
         rv_tarde.setAdapter(tardeAdapter);
 

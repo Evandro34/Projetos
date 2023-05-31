@@ -18,6 +18,7 @@ import java.util.List;
 import devandroid.evandro.procedimentosesus.R;
 import devandroid.evandro.procedimentosesus.adapater.ManhaAdapter;
 import devandroid.evandro.procedimentosesus.adapater.NoiteAdapter;
+import devandroid.evandro.procedimentosesus.api.AppUtil;
 import devandroid.evandro.procedimentosesus.controller.ConsultaController;
 import devandroid.evandro.procedimentosesus.model.Consulta;
 
@@ -52,8 +53,8 @@ public class NoiteFragment extends Fragment {
 
         rv_noite.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_noite.setHasFixedSize(true);
-        getCpf("09/05/1987").clear();
-        consultaList=getCpf("09/05/1987");
+        getCpf(AppUtil.getDataAtual()).clear();
+        consultaList=getCpf(AppUtil.getDataAtual());
         noiteAdapter = new NoiteAdapter(consultaList);
         rv_noite.setAdapter(noiteAdapter);
 

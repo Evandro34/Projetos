@@ -18,61 +18,205 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_data"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:background="@drawable/bg_edit"
-            android:text="09/05/1987" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_turno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:background="@drawable/bg_edit"
-            android:text="manha" />
+            <TextView
 
-        <TextView
-            android:id="@+id/tv_cpf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:background="@drawable/bg_edit"
-            android:text="111.111.111-11" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="Data    "
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="09/05/1987" />
 
-        <TextView
-            android:id="@+id/tv_data_nascimento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:background="@drawable/bg_edit"
-            android:text="09/05/1987" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_local"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:background="@drawable/bg_edit"
-            android:text="1-usb" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_procedimentos"
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="Turno "
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_turno"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="manha" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="CPF       "
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_cpf"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="111.111.111-11" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="D.nasc"
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_data_nascimento"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="09/05/1987" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="SEXO   "
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_sexo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="MASCULINO" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="Local  "
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_local"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="1-usb" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:padding="8dp"
-            android:background="@drawable/bg_edit"
-            android:inputType="textMultiLine"
-            android:text="TextView\n
-            TextView\n
-            TextView\n" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_proc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:text="Procedimentos realizados"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_procedimentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit"
+                android:inputType="textMultiLine"
+                android:padding="8dp"
+                android:text="TextView\n
+                TextView\n
+                TextView\n"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
