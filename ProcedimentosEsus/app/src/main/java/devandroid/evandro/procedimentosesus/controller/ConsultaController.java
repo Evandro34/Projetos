@@ -149,6 +149,7 @@ public class ConsultaController {
 
 
             consulta.setData(data);
+
             consulta.setTurno(turno);
             consulta.setCnsPaciente(cpf);
             paciente.setData_nascimento(dn);
