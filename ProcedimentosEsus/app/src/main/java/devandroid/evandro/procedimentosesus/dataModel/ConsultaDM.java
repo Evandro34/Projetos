@@ -16,6 +16,7 @@ public class ConsultaDM {
     public static final String ID = "id";
     public static final String FKCPF = "fkcpfPaciente";
     public static final String DATA = "data";
+
     public static final String TURNO = "turno";
     public static final String LOCAL = "local";
     public static final String PROCEDIMENTO= "procedimentos";

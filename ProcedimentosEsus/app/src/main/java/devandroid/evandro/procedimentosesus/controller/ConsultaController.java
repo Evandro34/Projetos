@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import devandroid.evandro.procedimentosesus.dataModel.ConsultaDM;
@@ -97,7 +98,6 @@ public class ConsultaController {
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
 
-        Log.i("Procedimentos", "CPF " + buscarCpf);
 
         while (cursor.moveToNext()) {
 
@@ -110,10 +110,14 @@ public class ConsultaController {
 
             Consulta consulta = new Consulta();
             consulta.setData(data);
+            Log.i("Procedimentos", "CPF " + data);
             consulta.setTurno(turno);
+            Log.i("Procedimentos", "CPF " + turno);
             consulta.setCnsPaciente(cpf);
+            Log.i("Procedimentos", "CPF " + cpf);
             //consulta.setData_nascimento(dn);
             consulta.setLocal(local);
+            Log.i("Procedimentos", "CPF " + local);
             // consulta.setProcedimentos(procedimento);
 
             consultaList.add(consulta);
@@ -122,41 +126,44 @@ public class ConsultaController {
 
     }
 
-    public List<Consulta> getTODOS(String cpf1) {
-        List<Consulta> consultaList = new ArrayList<>();
+    public Consulta getTODOS(String cpf1) {
 
-        String buscarCpf = "SELECT  DISTINCT " + ConsultaDM.FKCPF + ", " + ConsultaDM.TURNO + ", " + ConsultaDM.DATA + ", "
-                + PacienteDM.DATA_NASCIMENTO + ", " + ConsultaDM.LOCAL +
-                " FROM " + ConsultaDM.TABELA + " INNER JOIN " + PacienteDM.TABELA + " ON " + ConsultaDM.FKCPF + " = " + "'" + cpf1 + "'" + " AND " + ConsultaDM.TURNO + " = 'noite' ";
+        //"SELECT  DISTINCT fkcpfPaciente, datanascimento,sexo,turno, data, local FROM consulta INNER JOIN paciente ON fkcpfPaciente = cpf where fkcpfPaciente = '1' and  turno  ='noite'";
+
+        String buscarCpf = "SELECT  " + ConsultaDM.FKCPF + ", " + ConsultaDM.TURNO + ", " + ConsultaDM.DATA + ", "  + PacienteDM.DATA_NASCIMENTO + ", "+ ConsultaDM.LOCAL +
+                " FROM " + ConsultaDM.TABELA + " INNER JOIN " + PacienteDM.TABELA + " ON " + ConsultaDM.FKCPF + " = " + PacienteDM.CPF +" WHERE  "
+                + ConsultaDM.FKCPF +" = "+"'" + cpf1 + "'"+" AND "+ ConsultaDM.TURNO +" = "+" 'noite' " ;
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
+        Consulta consulta = new Consulta();;
+        Log.i("Procedimentos", "CPF " + buscarCpf);
 
         while (cursor.moveToNext()) {
-            @SuppressLint("Range") String data = cursor.getString(cursor.getColumnIndex(ConsultaDM.DATA));
-            @SuppressLint("Range") String turno = cursor.getString(cursor.getColumnIndex(ConsultaDM.TURNO));
-            @SuppressLint("Range") String cpf = cursor.getString(cursor.getColumnIndex(ConsultaDM.FKCPF));
-            @SuppressLint("Range") String dn = cursor.getString(cursor.getColumnIndex(PacienteDM.DATA_NASCIMENTO));
-            @SuppressLint("Range") String local = cursor.getString(cursor.getColumnIndex(ConsultaDM.LOCAL));
-            // @SuppressLint("Range") String procedimento = cursor.getString(cursor.getColumnIndex(ConsultaDM.PROCEDIMENTO));
 
-            Consulta consulta = new Consulta();
+            Paciente paciente = new Paciente();
+            String data = cursor.getString(cursor.getColumnIndexOrThrow(ConsultaDM.DATA));
+            String turno = cursor.getString(cursor.getColumnIndexOrThrow(ConsultaDM.TURNO));
+            String cpf = cursor.getString(cursor.getColumnIndexOrThrow(ConsultaDM.FKCPF));
+            String dn = cursor.getString(cursor.getColumnIndexOrThrow(PacienteDM.DATA_NASCIMENTO));
+            String local = cursor.getString(cursor.getColumnIndexOrThrow(ConsultaDM.LOCAL));
+
+
             consulta.setData(data);
             consulta.setTurno(turno);
             consulta.setCnsPaciente(cpf);
-            consulta.setData_nascimento(dn);
+            paciente.setData_nascimento(dn);
+            consulta.setData_nascimento(paciente.getData_nascimento());
             consulta.setLocal(local);
-            // consulta.setProcedimentos(procedimento);
+            consulta.setProcedimentos(listProcediemntos(cpf,data));
 
-            consultaList.add(consulta);
+
         }
-        return consultaList;
+        return  consulta;
 
     }
 
-    public Consulta getProcedimento(String cpf1) {
-        String buscarCpf = "SELECT " + ConsultaDM.DATA + ", " + ConsultaDM.TURNO + ", " + ConsultaDM.FKCPF + ", "
-                + PacienteDM.DATA_NASCIMENTO + ", " + ConsultaDM.LOCAL +
-                " FROM " + ConsultaDM.TABELA + " INNER JOIN " + PacienteDM.TABELA + " ON " + ConsultaDM.FKCPF + " = " + "'" + cpf1 + "'" + " AND " + ConsultaDM.TURNO + " = 'noite' ";
+    public Consulta  getProcedimento(String cpf1) {
+        String buscarCpf = "SELECT " + ConsultaDM.PROCEDIMENTO + " FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.FKCPF + " = " + "'" + cpf1 + "'" + " AND " + ConsultaDM.TURNO + " = 'noite' ";
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
         Consulta consulta = new Consulta();
@@ -181,30 +188,22 @@ public class ConsultaController {
 
     }
 
-    public List<Paciente> listPaciente() {
-        List<Paciente> consultaList = new ArrayList<>();
+    public String  listProcediemntos(String cpfs,String data) {
 
-        String buscarCpf = "SELECT * FROM " + PacienteDM.TABELA;
+
+        String buscarCpf = "SELECT "+ConsultaDM.PROCEDIMENTO+ " FROM " + ConsultaDM.TABELA +" WHERE "+ConsultaDM.FKCPF +"=" +"'"+cpfs+"'" +" AND "+ConsultaDM.DATA +" = "+"'"+data+"'";
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
-
+        String procedimentos="";
         while (cursor.moveToNext()) {
-            @SuppressLint("Range") String cpf = cursor.getString(cursor.getColumnIndex(PacienteDM.CPF));
-            @SuppressLint("Range") String nome = cursor.getString(cursor.getColumnIndex(PacienteDM.NOME));
-            @SuppressLint("Range") String dn = cursor.getString(cursor.getColumnIndex(PacienteDM.DATA_NASCIMENTO));
-            @SuppressLint("Range") String sexo = cursor.getString(cursor.getColumnIndex(PacienteDM.SEXO));
-            @SuppressLint("Range") String cor = cursor.getString(cursor.getColumnIndex(PacienteDM.COR));
-            Paciente paciente = new Paciente();
+            String procedimento = cursor.getString(cursor.getColumnIndexOrThrow(ConsultaDM.PROCEDIMENTO));
+
+            procedimentos = procedimentos  +procedimento+"\n";
 
 
-            paciente.setCpf(cpf);
-            paciente.setNome(nome);
-            paciente.setData_nascimento(dn);
-            paciente.setSexo(sexo);
-            paciente.setCor(cor);
-            consultaList.add(paciente);
+
         }
-        return consultaList;
+        return procedimentos;
 
     }
 

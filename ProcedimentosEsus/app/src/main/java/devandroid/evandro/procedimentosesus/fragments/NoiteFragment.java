@@ -52,7 +52,8 @@ public class NoiteFragment extends Fragment {
 
         rv_noite.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_noite.setHasFixedSize(true);
-        getCpf("09/05/1987");
+        getCpf("09/05/1987").clear();
+        consultaList=getCpf("09/05/1987");
         noiteAdapter = new NoiteAdapter(consultaList);
         rv_noite.setAdapter(noiteAdapter);
 
@@ -60,21 +61,23 @@ public class NoiteFragment extends Fragment {
     }
 
 
-    private void getCpf(String data) {
+    private List<Consulta> getCpf(String data) {
 
-        List<Consulta> consultas = new ArrayList<>();
+        List<Consulta> consultas = new ArrayList<>() ;
+
+        List<String> cpf = new ArrayList<>();
 
         for (Consulta consulta : consultaController.getCpf(data)
         ) {
-            consultaController.getProcedimentos(consulta.getCnsPaciente());
-            Consulta consulta1 = new Consulta();
-            consulta1.setData(consulta.getData());
-            consulta1.setTurno(consulta.getTurno());
-            consulta1.setLocal(consulta.getLocal());
-            consulta1.setCnsPaciente(consulta.getCnsPaciente());
-            consultas.add(consulta1);
+            cpf.add(consulta.getCnsPaciente());
         }
-        consultaList=consultas;
+
+        for (int i=0;i< cpf.size();i++){
+
+            consultas.add(consultaController.getTODOS(cpf.get(i)));
+        }
+
+        return consultas;
 
     }
 
