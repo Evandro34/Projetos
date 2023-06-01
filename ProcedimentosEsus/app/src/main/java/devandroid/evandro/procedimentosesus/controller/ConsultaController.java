@@ -147,5 +147,100 @@ public class ConsultaController {
 
     }
 
+    public int totalCurativo(String data){
+        int pa =0;
+
+        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
+                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Curativo"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
+        Cursor cursor = read.rawQuery(buscarCpf, null);
+
+
+        while (cursor.moveToNext()) {
+
+           pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
+
+        }
+        return pa;
+    }
+
+
+    public int totalPa(String data){
+        int pa =0;
+
+        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
+                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Pressao Arterial"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
+        Cursor cursor = read.rawQuery(buscarCpf, null);
+
+
+        while (cursor.moveToNext()) {
+
+            pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
+
+        }
+        return pa;
+    }
+
+    public int totalGlicemia(String data){
+        int pa =0;
+
+        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
+                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Glicemia"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
+        Cursor cursor = read.rawQuery(buscarCpf, null);
+
+
+        while (cursor.moveToNext()) {
+
+            pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
+
+        }
+        return pa;
+    }
+
+    public int totalPeso(String data){
+        int pa =0;
+
+        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
+                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Peso"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
+        Cursor cursor = read.rawQuery(buscarCpf, null);
+
+
+        while (cursor.moveToNext()) {
+
+            pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
+
+        }
+        return pa;
+    }
+
+    public int totalAltura(String data){
+        int pa =0;
+
+        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
+                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Altura"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
+        Cursor cursor = read.rawQuery(buscarCpf, null);
+
+
+        while (cursor.moveToNext()) {
+
+            pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
+
+        }
+        return pa;
+    }
+    public int totalTemperatura(String data){
+        int pa =0;
+
+        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
+                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Temperatura"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
+        Cursor cursor = read.rawQuery(buscarCpf, null);
+
+
+        while (cursor.moveToNext()) {
+
+            pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
+
+        }
+        return pa;
+    }
 
 }

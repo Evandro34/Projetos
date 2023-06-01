@@ -23,6 +23,7 @@ import devandroid.evandro.procedimentosesus.databinding.ActivityListarProcedimen
 import devandroid.evandro.procedimentosesus.fragments.ManhaFragment;
 import devandroid.evandro.procedimentosesus.fragments.NoiteFragment;
 import devandroid.evandro.procedimentosesus.fragments.TardeFragment;
+import devandroid.evandro.procedimentosesus.fragments.TotalFragment;
 
 public class ListarProcedimentoActivity extends AppCompatActivity {
     private TabLayout tab_layout;
@@ -48,6 +49,7 @@ public class ListarProcedimentoActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new ManhaFragment(), "Manhã");
         viewPagerAdapter.addFragment(new TardeFragment(), "Tarde");
         viewPagerAdapter.addFragment(new NoiteFragment(), "Noite");
+        viewPagerAdapter.addFragment(new TotalFragment(), "Total");
 
         view_pager.setAdapter(viewPagerAdapter);
         tab_layout.setElevation(0);
