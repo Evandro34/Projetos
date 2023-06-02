@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,13 +144,23 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
                 Log.i("TESTE", "tamanho " + proc1.size());
                 for (String procedimentos : proc1) {
 
-                    Consulta consulta = new Consulta();
-                    consulta.setCnsPaciente(et_cpf.getText().toString());
-                    consulta.setData(tv_data_atual.getText().toString());
-                    consulta.setTurno(sTurno);
-                    consulta.setLocal(sLocal);
-                    consulta.setProcedimentos(procedimentos);
-                    consultaController.salvarConsulta(consulta);
+
+
+
+                    try {
+                        Consulta consulta = new Consulta();
+                        consulta.setCnsPaciente(et_cpf.getText().toString());
+                        consulta.setData(AppUtil.getDataAtualFormatoAmericanoParaDB(tv_data_atual.getText().toString()));
+                        consulta.setTurno(sTurno);
+                        consulta.setLocal(sLocal);
+                        consulta.setProcedimentos(procedimentos);
+                        consultaController.salvarConsulta(consulta);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+
+
+
 
                 }
                 Intent intent = new Intent(this, ListarProcedimentoActivity.class);startActivity(intent);

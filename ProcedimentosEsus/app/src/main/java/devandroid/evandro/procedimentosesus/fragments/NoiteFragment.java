@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class NoiteFragment extends Fragment {
     private ConsultaController consultaController;
 
     private NoiteAdapter noiteAdapter;
+    private String dataAtual;
     private RecyclerView rv_noite;
 
 
@@ -43,6 +45,11 @@ public class NoiteFragment extends Fragment {
 
         consultaController = new ConsultaController(getContext());
 
+        try {
+            dataAtual = AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         configRecyclerView();
 
         return view;
@@ -53,8 +60,8 @@ public class NoiteFragment extends Fragment {
 
         rv_noite.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_noite.setHasFixedSize(true);
-        getCpf(AppUtil.getDataAtual()).clear();
-        consultaList=getCpf(AppUtil.getDataAtual());
+        getCpf(dataAtual).clear();
+        consultaList=getCpf(dataAtual);
         noiteAdapter = new NoiteAdapter(consultaList);
         rv_noite.setAdapter(noiteAdapter);
 

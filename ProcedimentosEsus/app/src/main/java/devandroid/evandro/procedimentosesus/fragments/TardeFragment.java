@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,8 @@ public class TardeFragment extends Fragment {
     private ConsultaController consultaController;
 
     private TardeAdapter tardeAdapter;
+
+    private String dataAtual;
     private RecyclerView rv_tarde;
 
     @Override
@@ -41,6 +44,12 @@ public class TardeFragment extends Fragment {
 
         consultaController = new ConsultaController(getContext());
 
+
+        try {
+            dataAtual = AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         configRecyclerView();
         return view;
     }
@@ -49,8 +58,8 @@ public class TardeFragment extends Fragment {
 
         rv_tarde.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_tarde.setHasFixedSize(true);
-        getCpf(AppUtil.getDataAtual()).clear();
-        consultaList=getCpf(AppUtil.getDataAtual());
+        getCpf(dataAtual).clear();
+        consultaList=getCpf(dataAtual);
         tardeAdapter = new TardeAdapter(consultaList);
         rv_tarde.setAdapter(tardeAdapter);
 

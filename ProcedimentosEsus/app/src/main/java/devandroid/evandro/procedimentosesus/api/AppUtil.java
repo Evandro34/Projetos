@@ -3,7 +3,10 @@ package devandroid.evandro.procedimentosesus.api;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.InputMismatchException;
 
 /**
@@ -30,7 +33,7 @@ public class AppUtil {
 
         String dia, mes, ano;
 
-        String dataAtual = "00/00/0000";
+        String dataAtual = "00-00-0000";
 
         try {
 
@@ -52,7 +55,7 @@ public class AppUtil {
 
             mes = (mes.length() > 2) ? mes.substring(1, 3) : mes;
 
-            dataAtual = dia + "/" + mes + "/" + ano;
+            dataAtual = dia + "-" + mes + "-" + ano;
 
             return dataAtual;
 
@@ -69,6 +72,24 @@ public class AppUtil {
     /**
      * @return devolve a hora atual
      */
+
+
+    public static String getDataAtualFormatoBrasileiro(String data) throws ParseException {
+        SimpleDateFormat formatoAmericano = new SimpleDateFormat("yyyy-MM-dd");
+        Date dataOriginal =formatoAmericano.parse(data);
+        SimpleDateFormat formatoBrasileiro = new SimpleDateFormat("dd-MM-yyyy");
+        return formatoBrasileiro.format(dataOriginal);
+
+    }
+
+
+    public static String getDataAtualFormatoAmericanoParaDB(String data) throws ParseException {
+        SimpleDateFormat formatoBrasileiro = new SimpleDateFormat("dd-MM-yyyy");
+        Date dataOriginal =formatoBrasileiro.parse(data);
+        SimpleDateFormat formatoAmericano = new SimpleDateFormat("yyyy-MM-dd");
+        return formatoAmericano.format(dataOriginal);
+
+    }
     public static String getHoraAtual() {
 
         String horaAtual = "00:00:00";

@@ -8,9 +8,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
 import java.util.List;
 
 import devandroid.evandro.procedimentosesus.R;
+import devandroid.evandro.procedimentosesus.api.AppUtil;
 import devandroid.evandro.procedimentosesus.model.Consulta;
 
 public class ManhaAdapter extends RecyclerView.Adapter<ManhaAdapter.MyViewHolder>{
@@ -32,13 +34,18 @@ public class ManhaAdapter extends RecyclerView.Adapter<ManhaAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Consulta consulta =consultaList.get(position);
 
-        holder.tv_data.setText(consulta.getData());
-        holder.tv_turno.setText(consulta.getTurno());
-        holder.tv_cpf.setText(consulta.getCnsPaciente());
-        holder.tv_data_nascimento.setText(consulta.getData_nascimento());
-        holder.tv_sexo.setText(consulta.getSexo());
-        holder.tv_local.setText(consulta.getLocal());
-        holder.tv_procedimentos.setText(consulta.getProcedimentos());
+        try {
+            holder.tv_data.setText(AppUtil.getDataAtualFormatoBrasileiro(consulta.getData()));
+            holder.tv_turno.setText(consulta.getTurno());
+            holder.tv_cpf.setText(consulta.getCnsPaciente());
+            holder.tv_data_nascimento.setText(consulta.getData_nascimento());
+            holder.tv_sexo.setText(consulta.getSexo());
+            holder.tv_local.setText(consulta.getLocal());
+            holder.tv_procedimentos.setText(consulta.getProcedimentos());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
 
 
 

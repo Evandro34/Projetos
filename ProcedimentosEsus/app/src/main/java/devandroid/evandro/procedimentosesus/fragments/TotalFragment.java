@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
+
 import devandroid.evandro.procedimentosesus.R;
 import devandroid.evandro.procedimentosesus.api.AppUtil;
 import devandroid.evandro.procedimentosesus.controller.ConsultaController;
@@ -40,7 +42,15 @@ public class TotalFragment extends Fragment {
         tv_total_curativo = view.findViewById(R.id.tv_total_curativo_simples);
         tv_total_peso = view.findViewById(R.id.tv_total_peso);
         tv_total_altura = view.findViewById(R.id.tv_total_altura);
-        buscarTotal(AppUtil.getDataAtual());
+
+
+        try {
+            buscarTotal(AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual()));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+
         return view;
     }
 

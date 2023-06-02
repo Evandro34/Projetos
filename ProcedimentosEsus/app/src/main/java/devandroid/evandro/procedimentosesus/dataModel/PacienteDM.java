@@ -23,7 +23,7 @@ public class PacienteDM {
     public static String gerarTabela() {
 
         query = "CREATE TABLE IF NOT EXISTS " + TABELA + " ( ";
-        query += CPF + " INTEGER PRIMARY KEY , ";
+        query += CPF + " TEXT PRIMARY KEY , ";
         query += NOME + " TEXT, ";
         query += DATA_NASCIMENTO + " TEXT, ";
         query += SEXO + " TEXT, ";
