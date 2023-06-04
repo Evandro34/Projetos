@@ -8,6 +8,9 @@ public class Paciente  {
     private String sexo;
     private String cor;
 
+    private Endereco enderecoPaciente;
+    private Consulta consultaPaciente;
+
     public String getCpf() {
         return cpf;
     }
@@ -46,5 +49,21 @@ public class Paciente  {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
+
+    public Endereco getEnderecoPaciente() {
+        return enderecoPaciente;
+    }
+
+    public void setEnderecoPaciente(Endereco enderecoPaciente) {
+        this.enderecoPaciente = enderecoPaciente;
+    }
+
+    public Consulta getConsultaPaciente() {
+        return consultaPaciente;
+    }
+
+    public void setConsultaPaciente(Consulta consultaPaciente) {
+        this.consultaPaciente = consultaPaciente;
     }
 }

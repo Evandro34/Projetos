@@ -35,7 +35,8 @@ public class ManhaAdapter extends RecyclerView.Adapter<ManhaAdapter.MyViewHolder
         Consulta consulta =consultaList.get(position);
 
         try {
-            holder.tv_data.setText(AppUtil.getDataAtualFormatoBrasileiro(consulta.getData()));
+            String dataFormatoBrasileiro = AppUtil.getDataAtualFormatoBrasileiro(consulta.getData());
+            holder.tv_data.setText(dataFormatoBrasileiro);
             holder.tv_turno.setText(consulta.getTurno());
             holder.tv_cpf.setText(consulta.getCnsPaciente());
             holder.tv_data_nascimento.setText(consulta.getData_nascimento());
