@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +58,7 @@ public class PacienteController {
 
         String buscarCpf2 = "SELECT DISTINCT " + ConsultaDM.FKCPF + " FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.DATA + " BETWEEN " + "'" + dataInicio + "'" + " AND " + "'" + dataFinal + "'" + " AND " + ConsultaDM.PROCEDIMENTO + " = " + "'Curativo'";
 
+        Log.i("TESTE2", "" + buscarCpf2);
 
         // String buscarCpf = "SELECT DISTINCT " + ConsultaDM.FKCPF + " FROM " +
         //        ConsultaDM.TABELA + " WHERE " + ConsultaDM.DATA + " = " + "'" + data + "'"+" AND " + ConsultaDM.TURNO + " = " + "'"+turno+"'";
@@ -76,7 +76,7 @@ public class PacienteController {
 
     }
 
-    public Paciente getTodasDataCurativoPorCpf(String cpf1) {
+    public Paciente getTodasDataCurativoPorCpf(String cpf1, String dataInicial, String dataFinal) {
 
         /* fkcpfendereco,
         nome,datanascimento,
@@ -94,7 +94,7 @@ public class PacienteController {
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
 
-        Log.i("Procedimentos", "CPF " + buscarCpf);
+        Log.i("TESTE2", "" + buscarCpf);
         Paciente paciente = new Paciente();
         Endereco endereco = new Endereco();
         Consulta consulta = new Consulta();
@@ -126,7 +126,7 @@ public class PacienteController {
             endereco.setCidade(cidade);
             endereco.setCep(cep);
             paciente.setEnderecoPaciente(endereco);
-            consulta.setData(listData(cpf1));
+            consulta.setData(listData(cpf1, dataInicial, dataFinal));
             paciente.setConsultaPaciente(consulta);
 
         }
@@ -134,28 +134,41 @@ public class PacienteController {
 
     }
 
-    private String listData(String cpf) {
+    private String listData(String cpf, String dataInicial, String dataFinal) {
 
-        String buscarCpf = "SELECT  distinct " +ConsultaDM.DATA
-                +" FROM " + ConsultaDM.TABELA + " WHERE "
-                + ConsultaDM.FKCPF + " = " + "'" + cpf + "'" +
-                " and " +ConsultaDM.DATA + " BETWEEN '2023-06-01'  And '2023-06-04' And " + ConsultaDM.PROCEDIMENTO+ " = 'Curativo'";
+        String buscarCpf = "SELECT  distinct " + ConsultaDM.DATA
+                + " FROM " + ConsultaDM.TABELA + " WHERE "
+                + ConsultaDM.FKCPF + " = " + "'" + cpf + "'"+" and "+ ConsultaDM.DATA + " BETWEEN " + "'" + dataInicial + "'" + " AND " + "'" + dataFinal + "'" + " And " + ConsultaDM.PROCEDIMENTO + " = 'Curativo'";
 
         Cursor cursor = read.rawQuery(buscarCpf, null);
-
+        Log.i("TESTE2", "" + buscarCpf);
         String procedimentos = "";
         while (cursor.moveToNext()) {
             String data = cursor.getString(cursor.getColumnIndexOrThrow(ConsultaDM.DATA));
 
-            try {
-                procedimentos = procedimentos + AppUtil.getDataAtualFormatoBrasileiro(data) + "\n";
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
+
+            procedimentos = procedimentos + AppUtil.getDataAtualFormatoBrasileiro(data) + "\n";
 
 
         }
         return procedimentos;
+
+    }
+
+    public int listTotalProcedimentosPab(String dataInicial, String dataFinal, String procedimento) {
+
+        String buscarCpf = "SELECT  COUNT(" + ConsultaDM.PROCEDIMENTO + ") FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.DATA + " BETWEEN " + "'" + dataInicial + "'" + "And '" + dataFinal + "' And " + ConsultaDM.PROCEDIMENTO + " = '" + procedimento + "'";
+
+        Log.i("Teste", "" + buscarCpf);
+        Cursor cursor = read.rawQuery(buscarCpf, null);
+        int total = 0;
+        String procedimentos = "";
+        while (cursor.moveToNext()) {
+            total = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
+
+
+        }
+        return total;
 
     }
 

@@ -45,11 +45,9 @@ public class TardeFragment extends Fragment {
         consultaController = new ConsultaController(getContext());
 
 
-        try {
+
             dataAtual = AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+
         configRecyclerView();
         return view;
     }
@@ -73,14 +71,14 @@ public class TardeFragment extends Fragment {
 
         List<String> cpf = new ArrayList<>();
 
-        for (Consulta consulta : consultaController.getCpf(data,"tarde")
+        for (Consulta consulta : consultaController.getTodoCpfDaDataAtual(data,AppUtil.TARDE)
         ) {
-            cpf.add(consulta.getCnsPaciente());
+             cpf.add(consulta.getCnsPaciente());
         }
 
         for (int i=0;i< cpf.size();i++){
 
-            consultas.add(consultaController.getTODOS(cpf.get(i),"tarde"));
+            consultas.add(consultaController.getTodosProcedimentoPorPaciente(cpf.get(i),AppUtil.TARDE));
         }
 
         return consultas;

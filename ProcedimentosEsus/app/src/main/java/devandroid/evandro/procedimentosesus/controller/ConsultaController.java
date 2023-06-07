@@ -1,6 +1,5 @@
 package devandroid.evandro.procedimentosesus.controller;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import devandroid.evandro.procedimentosesus.dataModel.ConsultaDM;
@@ -58,12 +56,12 @@ public class ConsultaController {
      *
      * @return
      */
-    public List<Consulta> getCpf(String data,String turno) {
+    public List<Consulta> getTodoCpfDaDataAtual(String data, String turno) {
 
         List<Consulta> consultaList = new ArrayList<>();
 
         String buscarCpf = "SELECT DISTINCT " + ConsultaDM.FKCPF + " FROM " +
-                ConsultaDM.TABELA + " WHERE " + ConsultaDM.DATA + " = " + "'" + data + "'"+" AND " + ConsultaDM.TURNO + " = " + "'"+turno+"'";
+                ConsultaDM.TABELA + " WHERE " + ConsultaDM.DATA + " = " + "'" + data + "'" + " AND " + ConsultaDM.TURNO + " = " + "'" + turno + "'";
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
 
@@ -83,13 +81,13 @@ public class ConsultaController {
      *
      * @return
      */
-    public Consulta getTODOS(String cpf1,String sTurno) {
+    public Consulta getTodosProcedimentoPorPaciente(String cpf1, String sTurno) {
 
         //"SELECT  DISTINCT fkcpfPaciente, datanascimento,sexo,turno, data, local FROM consulta INNER JOIN paciente ON fkcpfPaciente = cpf where fkcpfPaciente = '1' and  turno  ='noite'";
 
-        String buscarCpf = "SELECT  " + ConsultaDM.FKCPF + ", " + ConsultaDM.TURNO + ", " + ConsultaDM.DATA + ", " + PacienteDM.DATA_NASCIMENTO + ","  + PacienteDM.SEXO + ", " + ConsultaDM.LOCAL +
+        String buscarCpf = "SELECT  " + ConsultaDM.FKCPF + ", " + ConsultaDM.TURNO + ", " + ConsultaDM.DATA + ", " + PacienteDM.DATA_NASCIMENTO + "," + PacienteDM.SEXO + ", " + ConsultaDM.LOCAL +
                 " FROM " + ConsultaDM.TABELA + " INNER JOIN " + PacienteDM.TABELA + " ON " + ConsultaDM.FKCPF + " = " + PacienteDM.CPF + " WHERE  "
-                + ConsultaDM.FKCPF + " = " + "'" + cpf1 + "'"+" AND " + ConsultaDM.TURNO + " = " + "'"+sTurno+"'";
+                + ConsultaDM.FKCPF + " = " + "'" + cpf1 + "'" + " AND " + ConsultaDM.TURNO + " = " + "'" + sTurno + "'";
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
         Consulta consulta = new Consulta();
@@ -116,10 +114,11 @@ public class ConsultaController {
             paciente.setSexo(sexo);
             consulta.setSexo(paciente.getSexo());
             consulta.setLocal(local);
-            consulta.setProcedimentos(listProcediemntos(cpf, data,turno));
+            consulta.setProcedimentos(listProcedimentos(cpf, data, turno));
 
 
         }
+
         return consulta;
 
     }
@@ -129,10 +128,11 @@ public class ConsultaController {
      *
      * @return
      */
-    private String listProcediemntos(String cpfs, String data,String turno) {
+    private String listProcedimentos(String cpfs, String data, String turno) {
 
 
-        String buscarCpf = "SELECT " + ConsultaDM.PROCEDIMENTO + " FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.FKCPF + "=" + "'" + cpfs + "'" + " AND " + ConsultaDM.DATA + " = " + "'" + data + "'"+" AND " + ConsultaDM.TURNO + " = " + "'"+turno+"'";;
+        String buscarCpf = "SELECT " + ConsultaDM.PROCEDIMENTO + " FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.FKCPF + "=" + "'" + cpfs + "'" + " AND " + ConsultaDM.DATA + " = " + "'" + data + "'" + " AND " + ConsultaDM.TURNO + " = " + "'" + turno + "'";
+        ;
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
         String procedimentos = "";
@@ -143,95 +143,16 @@ public class ConsultaController {
 
 
         }
+
         return procedimentos;
 
     }
 
-    public int totalCurativo(String data){
-        int pa =0;
+    public int totalProcedimentosEsusData(String data, String procedimentos) {
+        int pa = 0;
 
         String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
-                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Curativo"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
-        Cursor cursor = read.rawQuery(buscarCpf, null);
-
-
-        while (cursor.moveToNext()) {
-
-           pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
-
-        }
-        return pa;
-    }
-
-
-    public int totalPa(String data){
-        int pa =0;
-
-        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
-                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Pressao Arterial"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
-        Cursor cursor = read.rawQuery(buscarCpf, null);
-
-
-        while (cursor.moveToNext()) {
-
-            pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
-
-        }
-        return pa;
-    }
-
-    public int totalGlicemia(String data){
-        int pa =0;
-
-        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
-                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Glicemia"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
-        Cursor cursor = read.rawQuery(buscarCpf, null);
-
-
-        while (cursor.moveToNext()) {
-
-            pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
-
-        }
-        return pa;
-    }
-
-    public int totalPeso(String data){
-        int pa =0;
-
-        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
-                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Peso"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
-        Cursor cursor = read.rawQuery(buscarCpf, null);
-
-
-        while (cursor.moveToNext()) {
-
-            pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
-
-        }
-        return pa;
-    }
-
-    public int totalAltura(String data){
-        int pa =0;
-
-        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
-                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Altura"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
-        Cursor cursor = read.rawQuery(buscarCpf, null);
-
-
-        while (cursor.moveToNext()) {
-
-            pa = Integer.parseInt(String.valueOf(cursor.getInt(Integer.parseInt("0"))));
-
-        }
-        return pa;
-    }
-    public int totalTemperatura(String data){
-        int pa =0;
-
-        String buscarCpf = "SELECT Count (" + ConsultaDM.PROCEDIMENTO + " )FROM " +
-                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" +"Temperatura"+ "'"+" AND " + ConsultaDM.DATA + " = " + "'"+data+"'";
+                ConsultaDM.TABELA + " WHERE " + ConsultaDM.PROCEDIMENTO + " = " + "'" + procedimentos + "'" + " AND " + ConsultaDM.DATA + " = " + "'" + data + "'";
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
 

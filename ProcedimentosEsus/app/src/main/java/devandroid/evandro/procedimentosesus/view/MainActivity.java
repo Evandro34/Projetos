@@ -36,5 +36,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, RelatorioBPAActivity.class);
             startActivity(intent);
         });
+        btn_relatorio_pab.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RelatorioPabActivity.class);
+            startActivity(intent);
+        });
     }
 }

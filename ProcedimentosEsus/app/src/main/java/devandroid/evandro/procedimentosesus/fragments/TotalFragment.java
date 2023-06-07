@@ -1,18 +1,12 @@
 package devandroid.evandro.procedimentosesus.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.text.ParseException;
+import androidx.fragment.app.Fragment;
 
 import devandroid.evandro.procedimentosesus.R;
 import devandroid.evandro.procedimentosesus.api.AppUtil;
@@ -44,25 +38,22 @@ public class TotalFragment extends Fragment {
         tv_total_altura = view.findViewById(R.id.tv_total_altura);
 
 
-        try {
-            buscarTotal(AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual()));
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-
+        buscarTotal(AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual()));
 
         return view;
     }
 
-    private void buscarTotal(String data){
 
-       tv_total_pa.setText(""+consultaController.totalPa(data));
-       tv_total_curativo.setText(""+consultaController.totalCurativo(data));
-       tv_total_peso.setText(""+consultaController.totalPeso(data));
-       tv_total_temperatura.setText(""+consultaController.totalTemperatura(data));
-       tv_total_altura.setText(""+consultaController.totalAltura(data));
-       tv_total_glicemia.setText(""+consultaController.totalGlicemia(data));
+    private void buscarTotal(String data) {
+
+        tv_total_pa.setText(String.valueOf(consultaController.totalProcedimentosEsusData(data, AppUtil.PRESSAO_ARTERIAL)));
+        tv_total_temperatura.setText(String.valueOf(consultaController.totalProcedimentosEsusData(data, AppUtil.TEMPERATURA)));
+        tv_total_curativo.setText(String.valueOf(consultaController.totalProcedimentosEsusData(data, AppUtil.CURATIVO)));
+        tv_total_glicemia.setText(String.valueOf(consultaController.totalProcedimentosEsusData(data, AppUtil.GLICEMIA)));
+        tv_total_altura.setText(String.valueOf(consultaController.totalProcedimentosEsusData(data, AppUtil.ALTURA)));
+        tv_total_peso.setText(String.valueOf(consultaController.totalProcedimentosEsusData(data, AppUtil.PESO)));
 
     }
+
 
 }

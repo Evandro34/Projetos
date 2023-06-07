@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
+import android.util.Log;
 import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,11 +58,9 @@ public class ManhaFragment extends Fragment {
         rv_manha = view.findViewById(R.id.rv_manha);
 
 
-        try {
-            dataAtual = AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+
+        dataAtual = AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual());
+
         configRecyclerView();
 
 
@@ -72,31 +71,36 @@ public class ManhaFragment extends Fragment {
 
     private void configRecyclerView() {
 
+
         rv_manha.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_manha.setHasFixedSize(true);
-        getCpf(dataAtual).clear();
-        consultaList=getCpf(dataAtual);
+        getPesquisaCpfPorData(dataAtual).clear();
+        consultaList= getPesquisaCpfPorData(dataAtual);
         manhaAdapter = new ManhaAdapter(consultaList);
         rv_manha.setAdapter(manhaAdapter);
+
 
 
     }
 
 
-    private List<Consulta> getCpf(String data) {
+    private List<Consulta> getPesquisaCpfPorData(String data) {
 
         List<Consulta> consultas = new ArrayList<>() ;
 
         List<String> cpf = new ArrayList<>();
 
-        for (Consulta consulta : consultaController.getCpf(data,"manha")
+        for (Consulta consulta : consultaController.getTodoCpfDaDataAtual(data,AppUtil.MANHA)
         ) {
+            Log.i("TESTE","data"+data);
             cpf.add(consulta.getCnsPaciente());
+            Log.i("TESTE",""+cpf.size());
         }
 
         for (int i=0;i< cpf.size();i++){
 
-            consultas.add(consultaController.getTODOS(cpf.get(i),"manha"));
+            consultas.add(consultaController.getTodosProcedimentoPorPaciente(cpf.get(i),AppUtil.MANHA));
+            Log.i("TESTE",""+consultas.size());
         }
 
         return consultas;

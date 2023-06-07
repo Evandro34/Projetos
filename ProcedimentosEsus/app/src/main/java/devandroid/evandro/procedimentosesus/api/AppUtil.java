@@ -19,6 +19,37 @@ import java.util.InputMismatchException;
  */
 public class AppUtil {
 
+    public static final String PRESSAO_ARTERIAL = "Pressão Arterial";
+    public static final String GLICEMIA = "Glicemia";
+    public static final String NEBULIZACAO = "Nebulização";
+    public static final String ALTURA = "Altura";
+    public static final String PESO = "Peso";
+    public static final String TEMPERATURA = "Temperarura";
+    public static final String CURATIVO = "Curativo";
+    public static final String RETIRADA_PONTO = "Retirada de Ponto";
+    public static final String VISITA = "Visita";
+    public static final String COVID = "Covid";
+    public static final String HEPATITE_C = "Hepatite c";
+    public static final String HIV = "HIV";
+    public static final String DENGUE = "Dengue";
+    public static final String HEPETITE_B = "Hepatite B";
+    public static final String SIFILIS = "Sifilis";
+
+
+    public static final String MANHA = "Manhã";
+
+    public static final String TARDE = "Tarde";
+
+    public static final String NOITE = "Noite";
+
+
+    public static final String MASCULINO = "M";
+
+    public static final String FEMININO = "F";
+
+    public static final String BRANCA = "Branca";
+    public static final String PARDA = "Parda";
+    public static final String PRETA = "Preta";
     public static final int TIME_SPLASH = 5 * 1000;
     public static final String PREF_APP = "app_cliente_vip_pref";
     public static final String LOG_APP = "CLIENTE_LOG";
@@ -74,18 +105,28 @@ public class AppUtil {
      */
 
 
-    public static String getDataAtualFormatoBrasileiro(String data) throws ParseException {
+    public static String getDataAtualFormatoBrasileiro(String data)  {
         SimpleDateFormat formatoAmericano = new SimpleDateFormat("yyyy-MM-dd");
-        Date dataOriginal =formatoAmericano.parse(data);
+        Date dataOriginal = null;
+        try {
+            dataOriginal = formatoAmericano.parse(data);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         SimpleDateFormat formatoBrasileiro = new SimpleDateFormat("dd-MM-yyyy");
         return formatoBrasileiro.format(dataOriginal);
 
     }
 
 
-    public static String getDataAtualFormatoAmericanoParaDB(String data) throws ParseException {
+    public static String getDataAtualFormatoAmericanoParaDB(String data) {
         SimpleDateFormat formatoBrasileiro = new SimpleDateFormat("dd-MM-yyyy");
-        Date dataOriginal =formatoBrasileiro.parse(data);
+        Date dataOriginal = null;
+        try {
+            dataOriginal = formatoBrasileiro.parse(data);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         SimpleDateFormat formatoAmericano = new SimpleDateFormat("yyyy-MM-dd");
         return formatoAmericano.format(dataOriginal);
 

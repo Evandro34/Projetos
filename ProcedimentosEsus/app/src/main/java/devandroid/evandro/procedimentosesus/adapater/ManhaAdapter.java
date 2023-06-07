@@ -34,7 +34,7 @@ public class ManhaAdapter extends RecyclerView.Adapter<ManhaAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Consulta consulta =consultaList.get(position);
 
-        try {
+
             String dataFormatoBrasileiro = AppUtil.getDataAtualFormatoBrasileiro(consulta.getData());
             holder.tv_data.setText(dataFormatoBrasileiro);
             holder.tv_turno.setText(consulta.getTurno());
@@ -43,9 +43,7 @@ public class ManhaAdapter extends RecyclerView.Adapter<ManhaAdapter.MyViewHolder
             holder.tv_sexo.setText(consulta.getSexo());
             holder.tv_local.setText(consulta.getLocal());
             holder.tv_procedimentos.setText(consulta.getProcedimentos());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+
 
 
 

@@ -1,31 +1,25 @@
 package devandroid.evandro.procedimentosesus.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.text.ParseException;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import devandroid.evandro.procedimentosesus.R;
 import devandroid.evandro.procedimentosesus.api.AppUtil;
 import devandroid.evandro.procedimentosesus.controller.ConsultaController;
-import devandroid.evandro.procedimentosesus.fragments.ManhaFragment;
-import devandroid.evandro.procedimentosesus.fragments.NoiteFragment;
-import devandroid.evandro.procedimentosesus.fragments.TardeFragment;
 import devandroid.evandro.procedimentosesus.model.Consulta;
 
 public class CadastroProcedimentosActivity extends AppCompatActivity {
@@ -45,7 +39,9 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
     private ConsultaController consultaController;
 
     private List<String> proc;
-    private List<String> proc1 = new ArrayList<>();;
+    private List<String> procedimentosPaciente = new ArrayList<>();
+    ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,15 +104,15 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
                 boolean noite = R.id.rb_noite == i;
 
                 if (manha) {
-                    sTurno = "manha";
+                    sTurno = AppUtil.MANHA;
                     bTurno = true;
                 }
                 if (tarde) {
-                    sTurno = "tarde";
+                    sTurno = AppUtil.TARDE;
                     bTurno = true;
                 }
                 if (noite) {
-                    sTurno = "noite";
+                    sTurno = AppUtil.NOITE;
                     bTurno = true;
                 }
             }
@@ -141,25 +137,17 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
             
             if (validaDados()) {
 
-                Log.i("TESTE", "tamanho " + proc1.size());
-                for (String procedimentos : proc1) {
+
+                for (String procedimentos : procedimentosPaciente) {
 
 
-
-
-                    try {
-                        Consulta consulta = new Consulta();
-                        consulta.setCnsPaciente(et_cpf.getText().toString());
-                        consulta.setData(AppUtil.getDataAtualFormatoAmericanoParaDB(tv_data_atual.getText().toString()));
-                        consulta.setTurno(sTurno);
-                        consulta.setLocal(sLocal);
-                        consulta.setProcedimentos(procedimentos);
-                        consultaController.salvarConsulta(consulta);
-                    } catch (ParseException e) {
-                        throw new RuntimeException(e);
-                    }
-
-
+                    Consulta consulta = new Consulta();
+                    consulta.setCnsPaciente(et_cpf.getText().toString());
+                    consulta.setData(AppUtil.getDataAtualFormatoAmericanoParaDB(tv_data_atual.getText().toString()));
+                    consulta.setTurno(sTurno);
+                    consulta.setLocal(sLocal);
+                    consulta.setProcedimentos(procedimentos);
+                    consultaController.salvarConsulta(consulta);
 
 
                 }
@@ -211,269 +199,94 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
 
     }
 
-    private boolean validaCheckbox() {
-
-        proc = new ArrayList<>();
-        boolean selecionado = false;
-
-        cb_pressao_arterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                Log.i("TESTE", " selecionado" + selecionou);
-                if (selecionou) {
-                    proc.add("Pressao Arterial");
-                } else {
-                    proc.remove("Pressao Arterial");
-                }
-            }
-        });
-        cb_glicemia.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Glicemia");
-                } else {
-                    proc.remove("Glicemia");
-                }
-            }
-        });
-        cb_nebulizacao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Nebulizacao");
-                } else {
-                    proc.remove("Nebulizacao");
-                }
-            }
-        });
-        cb_altura.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Altura");
-                } else {
-                    proc.remove("Altura");
-                }
-            }
-        });
-        cb_Peso.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Peso");
-                } else {
-                    proc.remove("Peso");
-                }
-            }
-        });
-        cb_Temperatura.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Temperatura");
-                } else {
-                    proc.remove("Tempertatura");
-                }
-            }
-        });
-        cb_curativo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Curativo");
-                } else {
-                    proc.remove("Curativo");
-                }
-            }
-        });
-        cb_r_de_pontos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Retirada de Pontos");
-                } else {
-                    proc.remove("Reetirada de Pontos");
-                }
-            }
-        });
-        cb_visita.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Visita");
-                } else {
-                    proc.remove("Visita");
-                }
-            }
-        });
-        cb_pressao_arterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Pressao Arterial");
-                } else {
-                    proc.remove("Pressao Arterial");
-                }
-            }
-        });
-        cb_covid.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Covid");
-                } else {
-                    proc.remove("Covid");
-                }
-            }
-        });
-        cb_hep_c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Hepatite c");
-                } else {
-                    proc.remove("Hepatite c");
-                }
-            }
-        });
-        cb_hiv.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("HIV");
-                } else {
-                    proc.remove("HIV");
-                }
-            }
-        });
-        cb_dengue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("dengue");
-                } else {
-                    proc.remove("dengue");
-                }
-            }
-        });
-        cb_hep_b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Hepatite b");
-                } else {
-                    proc.remove("Hepatite b");
-                }
-            }
-        });
-        cb_sifilis.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean selecionou) {
-                if (selecionou) {
-                    proc.add("Sifilis");
-                } else {
-                    proc.remove("Sifilis");
-                }
-            }
-        });
-
-        Log.i("TESTE", "tamanho " + proc.size());
-
-        if (proc.size() == 0) {
-            selecionado = false;
-        } else {
-            selecionado = true;
-        }
-        return selecionado;
-    }
 
     private boolean validaCheckbox1() {
 
         boolean selecionado = false;
 
         if (cb_pressao_arterial.isChecked()) {
-            proc1.add("Pressao Arterial");
+            procedimentosPaciente.add(AppUtil.PRESSAO_ARTERIAL);
         } else {
-            proc1.remove("Pressao Arterial");
+            procedimentosPaciente.remove(AppUtil.PRESSAO_ARTERIAL);
         }
         if (cb_glicemia.isChecked()) {
-            proc1.add("Glicemia");
+            procedimentosPaciente.add(AppUtil.GLICEMIA);
         } else {
-            proc1.remove("Glicemia");
+            procedimentosPaciente.remove(AppUtil.GLICEMIA);
         }
         if (cb_nebulizacao.isChecked()) {
-            proc1.add("Nebulizacao");
+            procedimentosPaciente.add(AppUtil.NEBULIZACAO);
         } else {
-            proc1.remove("Nebulizacao");
+            procedimentosPaciente.remove(AppUtil.NEBULIZACAO);
         }
         if (cb_altura.isChecked()) {
-            proc1.add("Altura");
+            procedimentosPaciente.add(AppUtil.ALTURA);
         } else {
-            proc1.remove("Altura");
+            procedimentosPaciente.remove(AppUtil.ALTURA);
         }
         if (cb_Peso.isChecked()) {
-            proc1.add("Peso");
+            procedimentosPaciente.add(AppUtil.PESO);
         } else {
-            proc1.remove("Peso");
+            procedimentosPaciente.remove(AppUtil.PESO);
         }
         if (cb_Temperatura.isChecked()) {
-            proc1.add("Temperatura");
+            procedimentosPaciente.add(AppUtil.TEMPERATURA);
         } else {
-            proc1.remove("Temperatura");
+            procedimentosPaciente.remove(AppUtil.TEMPERATURA);
         }
         if (cb_curativo.isChecked()) {
-            proc1.add("Curativo");
+            procedimentosPaciente.add(AppUtil.CURATIVO);
         } else {
-            proc1.remove("Curativo");
+            procedimentosPaciente.remove(AppUtil.CURATIVO);
         }
         if (cb_r_de_pontos.isChecked()) {
-            proc1.add("Retirada De Ponto");
+            procedimentosPaciente.add(AppUtil.RETIRADA_PONTO);
         } else {
-            proc1.remove("Retirada De Ponto");
+            procedimentosPaciente.remove(AppUtil.RETIRADA_PONTO);
         }
         if (cb_visita.isChecked()) {
-            proc1.add("Visita");
+            procedimentosPaciente.add(AppUtil.VISITA);
         } else {
-            proc1.remove("Visita");
+            procedimentosPaciente.remove(AppUtil.VISITA);
         }
         if (cb_covid.isChecked()) {
-            proc1.add("Covid");
+            procedimentosPaciente.add(AppUtil.COVID);
         } else {
-            proc1.remove("Covid");
+            procedimentosPaciente.remove(AppUtil.COVID);
         }
         if (cb_hep_c.isChecked()) {
-            proc1.add("Hepatite C");
+            procedimentosPaciente.add(AppUtil.HEPATITE_C);
         } else {
-            proc1.remove("Hepatite C");
+            procedimentosPaciente.remove(AppUtil.HEPATITE_C);
         }
         if (cb_hiv.isChecked()) {
-            proc1.add("HIV");
+            procedimentosPaciente.add(AppUtil.HIV);
         } else {
-            proc1.remove("HIV");
+            procedimentosPaciente.remove(AppUtil.HIV);
         }
         if (cb_dengue.isChecked()) {
-            proc1.add("Dengue");
+            procedimentosPaciente.add(AppUtil.DENGUE);
         } else {
-            proc1.remove("Dengue");
+            procedimentosPaciente.remove(AppUtil.DENGUE);
         }
         if (cb_hep_b.isChecked()) {
-            proc1.add("Hepatite B");
+            procedimentosPaciente.add(AppUtil.HEPETITE_B);
         } else {
-            proc1.remove("Hepatite B");
+            procedimentosPaciente.remove(AppUtil.HEPETITE_B);
         }
         if (cb_sifilis.isChecked()) {
-            proc1.add("Sifilis");
+            procedimentosPaciente.add(AppUtil.SIFILIS);
         } else {
-            proc1.remove("Sifilis");
+            procedimentosPaciente.remove(AppUtil.SIFILIS);
         }
 
 
-        if (proc1.size() > 0) {
+        if (procedimentosPaciente.size() > 0) {
             selecionado = true;
         } else {
             selecionado = false;
         }
         return selecionado;
     }
+
 }

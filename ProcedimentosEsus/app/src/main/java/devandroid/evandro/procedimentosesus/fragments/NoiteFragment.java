@@ -45,11 +45,9 @@ public class NoiteFragment extends Fragment {
 
         consultaController = new ConsultaController(getContext());
 
-        try {
-            dataAtual = AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+
+        dataAtual = AppUtil.getDataAtualFormatoAmericanoParaDB(AppUtil.getDataAtual());
+
         configRecyclerView();
 
         return view;
@@ -75,19 +73,20 @@ public class NoiteFragment extends Fragment {
 
         List<String> cpf = new ArrayList<>();
 
-        for (Consulta consulta : consultaController.getCpf(data,"noite")
+        for (Consulta consulta : consultaController.getTodoCpfDaDataAtual(data,AppUtil.NOITE)
         ) {
-            cpf.add(consulta.getCnsPaciente());
+             cpf.add(consulta.getCnsPaciente());
         }
 
         for (int i=0;i< cpf.size();i++){
 
-            consultas.add(consultaController.getTODOS(cpf.get(i),"noite"));
+            consultas.add(consultaController.getTodosProcedimentoPorPaciente(cpf.get(i),AppUtil.NOITE));
         }
 
         return consultas;
 
     }
+
 
 
 }
