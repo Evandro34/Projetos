@@ -16,17 +16,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id= "@+id/linearLayout3"
-        android:layout_margin="8dp"
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_btn"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/include2"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_btn"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/include2">
 
         <TextView
 
@@ -39,12 +39,22 @@
         <EditText
             android:id="@+id/ed_data_inicial"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
-            android:textAlignment="center"
             android:background="@drawable/bg_edit"
             android:hint="01-06-2023"
-            android:inputType="date" />
+            android:enabled="false"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/iv_data_inicial"
+            android:padding="2dp"
+            android:layout_margin="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/cor_principal"
+            app:srcCompat="@android:drawable/ic_menu_month" />
+
         <TextView
 
             android:layout_width="wrap_content"
@@ -56,12 +66,21 @@
         <EditText
             android:id="@+id/ed_data_final"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
-            android:textAlignment="center"
-            android:hint="01-06-2023"
             android:background="@drawable/bg_edit"
-            android:inputType="date" />
+            android:enabled="false"
+            android:hint="01-06-2023"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/iv_data_final"
+            android:padding="2dp"
+            android:background="@color/cor_principal"
+            android:layout_margin="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_month"/>
 
         <ImageView
             android:id="@+id/iv_filtrar"

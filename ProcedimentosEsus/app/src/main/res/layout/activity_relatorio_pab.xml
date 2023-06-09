@@ -18,10 +18,11 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="8dp"
         android:background="@drawable/bg_btn"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,14 +37,23 @@
             android:text="DE" />
 
         <EditText
-            android:id="@+id/ed_data_inicial"
+            android:id="@+id/ed_data_inicial_pab"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
             android:background="@drawable/bg_edit"
             android:hint="01-06-2023"
-            android:inputType="date"
+            android:enabled="false"
             android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/iv_data_inicial_pab"
+            android:padding="2dp"
+            android:layout_margin="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_month"
+            />
 
         <TextView
 
@@ -54,17 +64,25 @@
             android:text="ATÉ" />
 
         <EditText
-            android:id="@+id/ed_data_final"
+            android:id="@+id/ed_data_final_pab"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
             android:background="@drawable/bg_edit"
+            android:enabled="false"
             android:hint="01-06-2023"
-            android:inputType="date"
             android:textAlignment="center" />
 
         <ImageView
-            android:id="@+id/iv_filtrar"
+            android:id="@+id/iv_data_final_pab"
+            android:padding="2dp"
+            android:layout_margin="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_month"/>
+
+        <ImageView
+            android:id="@+id/iv_filtrar_pab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
