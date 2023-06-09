@@ -42,7 +42,11 @@ public class ListarPacienteActivity extends AppCompatActivity {
 
         btn_pesquisar.setOnClickListener(view -> {
            if(iet_cpf_cns.getText().toString().equals("11111111111")){
-
+               Intent intent = new Intent(this,CadastroProcedimentosActivity.class);
+               startActivity(intent);
+           }else{
+               Intent intent = new Intent(this,CadastroPacienteActivity.class);
+               startActivity(intent);
            }
         });
 

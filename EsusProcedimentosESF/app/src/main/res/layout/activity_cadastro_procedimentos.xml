@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cor_principal"
+    tools:context=".view.CadastroProcedimentosActivity">
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar_voltar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tx_data_atual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tv_data_atual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit"
+            android:hint="Data Atual" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:fadeScrollbars="false"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_data_atual">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Turno"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+
+
+                <RadioGroup
+                    android:id="@+id/rg_turno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_manha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:text="Manhã" />
+
+                    <RadioButton
+                        android:id="@+id/rb_tarde"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:text="Tarde" />
+
+                    <RadioButton
+                        android:id="@+id/rb_noite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:text="Noite" />
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:background="@drawable/bg_edit"
+                    android:hint="CPF" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:background="@drawable/bg_edit"
+                    android:hint="Nome" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+             <com.google.android.material.textfield.TextInputLayout
+
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_data_nascimento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:background="@drawable/bg_edit"
+                    android:hint="Data Nascimento" />
+
+            </com.google.android.material.textfield.TextInputLayout><com.google.android.material.textfield.TextInputLayout
+
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_sexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:background="@drawable/bg_edit"
+                    android:hint="Sexo" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="Local Atendimento"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/sp_local"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:padding="16dp"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Procedimentos"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_pressao_arterial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pressão Arterial" />
+
+                    <CheckBox
+                        android:id="@+id/cb_glicemia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Glicemia" />
+
+                    <CheckBox
+                        android:id="@+id/cb_nebulizacao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nebulizacão" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_altura"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Altura" />
+
+                    <CheckBox
+                        android:id="@+id/cb_Peso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Peso" />
+
+                    <CheckBox
+                        android:id="@+id/cb_Temperatura"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Temperatura" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_curativo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Curativo" />
+
+                    <CheckBox
+                        android:id="@+id/cb_r_de_pontos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="R_de_Pontos" />
+
+                    <CheckBox
+                        android:id="@+id/cb_visita"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Visita" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_covid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Covid" />
+
+                    <CheckBox
+                        android:id="@+id/cb_hep_c"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hep_C" />
+
+                    <CheckBox
+                        android:id="@+id/cb_hiv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="HIV" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_dengue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dengue" />
+
+                    <CheckBox
+                        android:id="@+id/cb_hep_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hep_B" />
+
+                    <CheckBox
+                        android:id="@+id/cb_sifilis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Sifilis" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <android.widget.Button
+                android:id="@+id/btn_cadastrar_paciente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_btn"
+                android:text="Cadastrar Procedimentos"
+                android:textAllCaps="false"
+                android:textColor="@color/cor_principal"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
