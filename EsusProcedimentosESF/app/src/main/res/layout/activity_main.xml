@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cor_principal"
+    tools:context=".view.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+
+            <android.widget.Button
+                android:id="@+id/btn_cad_procedimento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_btn"
+                android:drawableLeft="@drawable/icc_add_proc_32"
+                android:padding="16dp"
+                android:text="Cadastrar Procedimentos "
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+
+            <android.widget.Button
+                android:id="@+id/btn_relatorio_pab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_btn"
+                android:drawableLeft="@drawable/ic_relatorio_32"
+                android:padding="16dp"
+                android:text="Relatório Pab"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+
+            <android.widget.Button
+                android:id="@+id/btn_relatorio_bpa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_btn"
+                android:drawableLeft="@drawable/ic_relatorio_32"
+                android:padding="16dp"
+                android:text="Relatório Bpa"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

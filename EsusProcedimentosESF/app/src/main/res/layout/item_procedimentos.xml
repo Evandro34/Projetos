@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cor_principal">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:padding="8dp"
+        android:background="@drawable/bg_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="Data    "
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="09/05/1987" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="Turno "
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_turno"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="manha" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="CPF       "
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_cpf"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="111.111.111-11" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="D.nasc"
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_data_nascimento"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="09/05/1987" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="SEXO   "
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_sexo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="MASCULINO" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:padding="8dp"
+                android:text="Local  "
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_local"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_edit"
+                android:text="1-usb" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_proc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:text="Procedimentos realizados"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_procedimentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit"
+                android:inputType="textMultiLine"
+                android:padding="8dp"
+                android:text="TextView\n
+                TextView\n
+                TextView\n"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
