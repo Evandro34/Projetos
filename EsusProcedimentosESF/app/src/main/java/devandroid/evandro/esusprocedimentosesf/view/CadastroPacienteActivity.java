@@ -1,21 +1,22 @@
 package devandroid.evandro.esusprocedimentosesf.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -23,6 +24,10 @@ import java.util.Calendar;
 
 import devandroid.evandro.esusprocedimentosesf.R;
 import devandroid.evandro.esusprocedimentosesf.api.AppUtil;
+import devandroid.evandro.esusprocedimentosesf.controller.EnderecoController;
+import devandroid.evandro.esusprocedimentosesf.controller.PessoaController;
+import devandroid.evandro.esusprocedimentosesf.model.Endereco;
+import devandroid.evandro.esusprocedimentosesf.model.Pessoa;
 
 public class CadastroPacienteActivity extends AppCompatActivity {
 
@@ -31,7 +36,7 @@ public class CadastroPacienteActivity extends AppCompatActivity {
     private RadioGroup rg_sexo, rg_cor;
     private ImageView iv_data_nascimento;
     private Spinner sp_logradouro, sp_Bairro;
-    private String sLougradouro;
+    private String sLougradouro = "";
     private TextView txt_cidade, txt_estado, txt_cep;
 
     private RadioButton rb_masculino, rb_feminino, rb_branco, rb_preto, rb_pardo;
@@ -40,18 +45,25 @@ public class CadastroPacienteActivity extends AppCompatActivity {
     private boolean bSexo;
     private String sCor;
     private boolean bCor;
-    private String sBairro;
+    private String sBairro = "";
+
+    private PessoaController pessoaController;
+    private EnderecoController enderecoController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_paciente);
         iniciaComponente();
+        cliqueBotao();
+        pessoaController = new PessoaController(this);
+        enderecoController= new EnderecoController(this);
 
         iv_data_nascimento.setOnClickListener(view -> {
             DialogFragment dialogFragment = new CadastroPacienteActivity.DatePicker();
-            dialogFragment.show(getSupportFragmentManager(),"DataInicial");
+            dialogFragment.show(getSupportFragmentManager(), "DataInicial");
         });
+
     }
 
     private void iniciaComponente() {
@@ -182,13 +194,56 @@ public class CadastroPacienteActivity extends AppCompatActivity {
         sp_logradouro.setAdapter(spinnerArrayAdapter);
 
 
-        String Bairro[] = {"SELECIONE UM BAIRRO", "CALAFATE", "VISTA ALEGRE", "BURACO", "MALICIA", "GERALDO LARA", "BELVEDERE", "CHACARA","ESTIVA","CENTRO","TIJUCO"};
+        String Bairro[] = {"SELECIONE UM BAIRRO", "CALAFATE", "VISTA ALEGRE", "BURACO", "MALICIA", "GERALDO LARA", "BELVEDERE", "CHACARA", "ESTIVA", "CENTRO", "TIJUCO"};
         ArrayAdapter<String> spinnerArrayAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Bairro);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         sp_Bairro.setAdapter(spinnerArrayAdapter1);
 
 
     }
+
+    private void cliqueBotao() {
+
+
+        btn_salvar_dados.setOnClickListener(view -> {
+
+
+            if(validaDados()) {
+                Pessoa paciente = new Pessoa();
+                Endereco endereco = new Endereco();
+                paciente.setCpf(edt_cpf.getText().toString());
+                paciente.setNome(edt_nome.getText().toString());
+                paciente.setData_nascimento(edt_data_nascimento.getText().toString());
+                paciente.setSexo(sSexo);
+                paciente.setCor(sCor);
+
+                pessoaController.salvarPessoa(paciente);
+                Log.i(AppUtil.LOG_APP, "id == >" + pessoaController.getLastPK());
+                endereco.setFkidPessoaEndereco(pessoaController.getLastPK());
+                endereco.setLogradouro( sp_logradouro.getSelectedItem().toString());
+                Log.i(AppUtil.LOG_APP, "logradouro " + sp_logradouro.getSelectedItem().toString());
+                endereco.setEndereco(edt_endereco.getText().toString());
+                Log.i(AppUtil.LOG_APP, "endereco " + edt_endereco.getText().toString());
+                endereco.setNumero(edt_Numero.getText().toString());
+                Log.i(AppUtil.LOG_APP, "numero " + edt_Numero.getText().toString());
+                endereco.setBairro(sp_Bairro.getSelectedItem().toString());
+                Log.i(AppUtil.LOG_APP, "bairro " + sp_Bairro.getSelectedItem().toString());
+                endereco.setCidade(txt_cidade.getText().toString());
+                Log.i(AppUtil.LOG_APP, "cidade  " + txt_cidade.getText().toString());
+                endereco.setEstado(txt_estado.getText().toString());
+                Log.i(AppUtil.LOG_APP, "estado" + txt_estado.getText().toString());
+                endereco.setCep(txt_cep.getText().toString());
+                Log.i(AppUtil.LOG_APP, "cep " + txt_cep.getText().toString());
+                enderecoController.salvarEndereco(endereco);
+
+                Intent intent = new Intent(this, CadastroProcedimentosActivity.class);
+                intent.putExtra("id",pessoaController.getLastPK());
+                startActivity(intent);
+            }
+
+        });
+    }
+
     private boolean validaDados() {
 
 
@@ -218,8 +273,6 @@ public class CadastroPacienteActivity extends AppCompatActivity {
         }
         if (sp_logradouro.getSelectedItemPosition() == 0) {
             retorno = false;
-        } else {
-            sLougradouro = sp_logradouro.getSelectedItem().toString();
         }
         if (TextUtils.isEmpty(edt_endereco.getText().toString())) {
             edt_endereco.setError("*");
@@ -235,8 +288,6 @@ public class CadastroPacienteActivity extends AppCompatActivity {
 
         if (sp_Bairro.getSelectedItemPosition() == 0) {
             retorno = false;
-        } else {
-            sBairro = sp_Bairro.getSelectedItem().toString();
         }
 
         return retorno;

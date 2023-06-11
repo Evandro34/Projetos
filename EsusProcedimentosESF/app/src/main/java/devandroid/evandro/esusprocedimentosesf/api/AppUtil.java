@@ -34,6 +34,7 @@ public class AppUtil {
     public static final String DENGUE = "Dengue";
     public static final String HEPETITE_B = "Hepatite B";
     public static final String SIFILIS = "Sifilis";
+    public static final String LOG_APP = "Teste";
 
 
     public static final String MANHA = "Manhã";
@@ -128,6 +129,7 @@ public class AppUtil {
     }
 
     public static String getDataAtualFormatoBrasileiro(String data)  {
+
         SimpleDateFormat formatoAmericano = new SimpleDateFormat("yyyy-MM-dd");
         Date dataOriginal = null;
         try {
@@ -136,6 +138,7 @@ public class AppUtil {
             throw new RuntimeException(e);
         }
         SimpleDateFormat formatoBrasileiro = new SimpleDateFormat("dd-MM-yyyy");
+
         return formatoBrasileiro.format(dataOriginal);
 
     }

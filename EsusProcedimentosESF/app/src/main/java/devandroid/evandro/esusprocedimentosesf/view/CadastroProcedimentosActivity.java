@@ -1,10 +1,8 @@
 package devandroid.evandro.esusprocedimentosesf.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,6 +12,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -21,25 +21,66 @@ import java.util.List;
 
 import devandroid.evandro.esusprocedimentosesf.R;
 import devandroid.evandro.esusprocedimentosesf.api.AppUtil;
+import devandroid.evandro.esusprocedimentosesf.controller.ConsultaController;
+import devandroid.evandro.esusprocedimentosesf.controller.PessoaController;
+
+import devandroid.evandro.esusprocedimentosesf.model.Consulta;
+import devandroid.evandro.esusprocedimentosesf.model.Pessoa;
 
 public class CadastroProcedimentosActivity extends AppCompatActivity {
 
     private TextInputEditText et_cpf, tv_data_atual, tv_nome, tv_data_nascimento, tv_sexo;
     private RadioGroup rg_turno;
+    private PessoaController pessoaController;
+    private ConsultaController consultaController;
     private RadioButton rb_manha, rb_tarde, rb_noite;
     private Spinner sp_local;
+
+    int id = 0;
     private String sTurno, sLocal;
     private boolean bTurno;
-    private CheckBox cb_pressao_arterial, cb_glicemia, cb_nebulizacao, cb_altura, cb_Peso, cb_Temperatura, cb_curativo, cb_r_de_pontos, cb_visita, cb_covid, cb_hep_c, cb_hiv, cb_dengue, cb_hep_b, cb_sifilis;
-    private Button  btn_cadastrar_paciente;
-    private List<String> procedimentosPaciente = new ArrayList<>();
+    private CheckBox cb_pressao_arterial, cb_glicemia,
+            cb_nebulizacao, cb_altura, cb_Peso, cb_Temperatura,
+            cb_curativo, cb_r_de_pontos,
+            cb_visita, cb_covid,
+            cb_hep_c,
+            cb_hiv,
+            cb_dengue,
+            cb_hep_b,
+            cb_sifilis;
+    private Button btn_cadastrar_paciente;
+    private List<String> procedimentoPessoa ;
+    private List<Pessoa> dados = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_procedimentos);
 
+        pessoaController = new PessoaController(this);
+        consultaController = new ConsultaController(this);
+
+
         iniciaComponente();
+        recuperDadosPaciente();
         cliqueBotao();
+
+    }
+
+    private void recuperDadosPaciente() {
+        Bundle bundle = getIntent().getExtras();
+        id = bundle.getInt("id");
+
+        Log.i(AppUtil.LOG_APP, "" + id);
+
+        dados.add(pessoaController.getBuscaPessoaId(id));
+
+        for (Pessoa pessoa1 : dados) {
+            tv_nome.setText(pessoa1.getNome());
+            tv_data_nascimento.setText(pessoa1.getData_nascimento());
+            tv_sexo.setText(pessoa1.getSexo());
+            et_cpf.setText(pessoa1.getCpf());
+        }
     }
 
     private void iniciaComponente() {
@@ -118,29 +159,27 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
         btn_cadastrar_paciente.setOnClickListener(view -> {
             Toast.makeText(this,""+validaDados(),Toast.LENGTH_LONG).show();
 
-/*
+
             if (validaDados()) {
 
 
-                for (String procedimentos : procedimentosPaciente) {
+                for (String procedimentosDia : procedimentoPessoa) {
 
+                    Log.i(AppUtil.LOG_APP,"Procedimentos"+procedimentosDia);
+                    Consulta procedimentos = new Consulta();
 
-                    Consulta consulta = new Consulta();
-                    consulta.setCnsPaciente(et_cpf.getText().toString());
-                    consulta.setData(AppUtil.getDataAtualFormatoAmericanoParaDB(tv_data_atual.getText().toString()));
-                    consulta.setTurno(sTurno);
-                    consulta.setLocal(sLocal);
-                    consulta.setProcedimentos(procedimentos);
-                    consultaController.salvarConsulta(consulta);
-
-
+                    procedimentos.setFkidPessoaConsulta(id);
+                    procedimentos.setData(AppUtil.getDataAtualFormatoAmericanoParaDB(tv_data_atual.getText().toString()));
+                    procedimentos.setTurno(sTurno);
+                    procedimentos.setLocal(sp_local.getSelectedItem().toString());
+                    procedimentos.setProcedimentos(procedimentosDia);
+                    consultaController.salvarConsulta(procedimentos);
                 }
-                Intent intent = new Intent(this, ListarProcedimentoActivity.class);startActivity(intent);
-
+                Intent intent = new Intent(this, ListarProcedimentosActivity.class);
+                startActivity(intent);
 
 
             }
-*/
 
 
         });
@@ -156,8 +195,6 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
 
         if (sp_local.getSelectedItemPosition() == 0) {
             retorno = false;
-        } else {
-            sLocal = sp_local.getSelectedItem().toString();
         }
 
         if (!validaCheckbox1()) {
@@ -178,87 +215,87 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
     }
 
     private boolean validaCheckbox1() {
+        procedimentoPessoa = new ArrayList<>();
 
         boolean selecionado = false;
 
         if (cb_pressao_arterial.isChecked()) {
-            procedimentosPaciente.add(AppUtil.PRESSAO_ARTERIAL);
+            procedimentoPessoa.add(AppUtil.PRESSAO_ARTERIAL);
         } else {
-            procedimentosPaciente.remove(AppUtil.PRESSAO_ARTERIAL);
+            procedimentoPessoa.remove(AppUtil.PRESSAO_ARTERIAL);
         }
         if (cb_glicemia.isChecked()) {
-            procedimentosPaciente.add(AppUtil.GLICEMIA);
+            procedimentoPessoa.add(AppUtil.GLICEMIA);
         } else {
-            procedimentosPaciente.remove(AppUtil.GLICEMIA);
+            procedimentoPessoa.remove(AppUtil.GLICEMIA);
         }
         if (cb_nebulizacao.isChecked()) {
-            procedimentosPaciente.add(AppUtil.NEBULIZACAO);
+            procedimentoPessoa.add(AppUtil.NEBULIZACAO);
         } else {
-            procedimentosPaciente.remove(AppUtil.NEBULIZACAO);
+            procedimentoPessoa.remove(AppUtil.NEBULIZACAO);
         }
         if (cb_altura.isChecked()) {
-            procedimentosPaciente.add(AppUtil.ALTURA);
+            procedimentoPessoa.add(AppUtil.ALTURA);
         } else {
-            procedimentosPaciente.remove(AppUtil.ALTURA);
+            procedimentoPessoa.remove(AppUtil.ALTURA);
         }
         if (cb_Peso.isChecked()) {
-            procedimentosPaciente.add(AppUtil.PESO);
+            procedimentoPessoa.add(AppUtil.PESO);
         } else {
-            procedimentosPaciente.remove(AppUtil.PESO);
+            procedimentoPessoa.remove(AppUtil.PESO);
         }
         if (cb_Temperatura.isChecked()) {
-            procedimentosPaciente.add(AppUtil.TEMPERATURA);
+            procedimentoPessoa.add(AppUtil.TEMPERATURA);
         } else {
-            procedimentosPaciente.remove(AppUtil.TEMPERATURA);
+            procedimentoPessoa.remove(AppUtil.TEMPERATURA);
         }
         if (cb_curativo.isChecked()) {
-            procedimentosPaciente.add(AppUtil.CURATIVO);
+            procedimentoPessoa.add(AppUtil.CURATIVO);
         } else {
-            procedimentosPaciente.remove(AppUtil.CURATIVO);
+            procedimentoPessoa.remove(AppUtil.CURATIVO);
         }
         if (cb_r_de_pontos.isChecked()) {
-            procedimentosPaciente.add(AppUtil.RETIRADA_PONTO);
+            procedimentoPessoa.add(AppUtil.RETIRADA_PONTO);
         } else {
-            procedimentosPaciente.remove(AppUtil.RETIRADA_PONTO);
+            procedimentoPessoa.remove(AppUtil.RETIRADA_PONTO);
         }
         if (cb_visita.isChecked()) {
-            procedimentosPaciente.add(AppUtil.VISITA);
+            procedimentoPessoa.add(AppUtil.VISITA);
         } else {
-            procedimentosPaciente.remove(AppUtil.VISITA);
+            procedimentoPessoa.remove(AppUtil.VISITA);
         }
         if (cb_covid.isChecked()) {
-            procedimentosPaciente.add(AppUtil.COVID);
+            procedimentoPessoa.add(AppUtil.COVID);
         } else {
-            procedimentosPaciente.remove(AppUtil.COVID);
+            procedimentoPessoa.remove(AppUtil.COVID);
         }
         if (cb_hep_c.isChecked()) {
-            procedimentosPaciente.add(AppUtil.HEPATITE_C);
+            procedimentoPessoa.add(AppUtil.HEPATITE_C);
         } else {
-            procedimentosPaciente.remove(AppUtil.HEPATITE_C);
+            procedimentoPessoa.remove(AppUtil.HEPATITE_C);
         }
         if (cb_hiv.isChecked()) {
-            procedimentosPaciente.add(AppUtil.HIV);
+            procedimentoPessoa.add(AppUtil.HIV);
         } else {
-            procedimentosPaciente.remove(AppUtil.HIV);
+            procedimentoPessoa.remove(AppUtil.HIV);
         }
         if (cb_dengue.isChecked()) {
-            procedimentosPaciente.add(AppUtil.DENGUE);
+            procedimentoPessoa.add(AppUtil.DENGUE);
         } else {
-            procedimentosPaciente.remove(AppUtil.DENGUE);
+            procedimentoPessoa.remove(AppUtil.DENGUE);
         }
         if (cb_hep_b.isChecked()) {
-            procedimentosPaciente.add(AppUtil.HEPETITE_B);
+            procedimentoPessoa.add(AppUtil.HEPETITE_B);
         } else {
-            procedimentosPaciente.remove(AppUtil.HEPETITE_B);
+            procedimentoPessoa.remove(AppUtil.HEPETITE_B);
         }
         if (cb_sifilis.isChecked()) {
-            procedimentosPaciente.add(AppUtil.SIFILIS);
+            procedimentoPessoa.add(AppUtil.SIFILIS);
         } else {
-            procedimentosPaciente.remove(AppUtil.SIFILIS);
+            procedimentoPessoa.remove(AppUtil.SIFILIS);
         }
 
-
-        if (procedimentosPaciente.size() > 0) {
+        if (procedimentoPessoa.size() > 0) {
             selecionado = true;
         } else {
             selecionado = false;

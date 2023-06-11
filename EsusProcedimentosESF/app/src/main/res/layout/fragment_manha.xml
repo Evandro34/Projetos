@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/cor_principal"
     tools:context=".fragments.ManhaFragment">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_manha"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

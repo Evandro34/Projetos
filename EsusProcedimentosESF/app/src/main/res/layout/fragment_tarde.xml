@@ -7,8 +7,9 @@
     tools:context=".fragments.TardeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_noite"
+        android:id="@+id/rv_tarde"
         tools:listitem="@layout/item_procedimentos"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
