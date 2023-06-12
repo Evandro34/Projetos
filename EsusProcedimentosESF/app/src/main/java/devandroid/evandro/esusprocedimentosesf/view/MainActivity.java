@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         btn_relatorio_bpa.setOnClickListener(view -> {
-          //  Intent intent = new Intent(this, RelatorioBPAActivity.class);
-          //  startActivity(intent);
+           Intent intent = new Intent(this, RelatorioBpaActivity.class);
+           startActivity(intent);
         });
         btn_relatorio_pab.setOnClickListener(view -> {
-           // Intent intent = new Intent(this, RelatorioPabActivity.class);
-           // startActivity(intent);
+            Intent intent = new Intent(this, RelatorioPabActivity.class);
+            startActivity(intent);
         });
     }
 }

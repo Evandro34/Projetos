@@ -9,6 +9,24 @@ public class Pessoa {
     private String sexo;
     private String cor;
 
+    private Endereco enderecoPaciente;
+    private Consulta consultaPaciente;
+
+    public Endereco getEnderecoPaciente() {
+        return enderecoPaciente;
+    }
+
+    public void setEnderecoPaciente(Endereco enderecoPaciente) {
+        this.enderecoPaciente = enderecoPaciente;
+    }
+
+    public Consulta getConsultaPaciente() {
+        return consultaPaciente;
+    }
+
+    public void setConsultaPaciente(Consulta consultaPaciente) {
+        this.consultaPaciente = consultaPaciente;
+    }
 
     public int getIdPessoa() {
         return idPessoa;
