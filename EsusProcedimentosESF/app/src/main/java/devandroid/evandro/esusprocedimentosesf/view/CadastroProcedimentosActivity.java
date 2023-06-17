@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -35,8 +36,9 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
     private ConsultaController consultaController;
     private RadioButton rb_manha, rb_tarde, rb_noite;
     private Spinner sp_local;
+    private ImageView ib_voltar;
 
-    int id = 0;
+    int idPaciente = 0;
     private String sTurno, sLocal;
     private boolean bTurno;
     private CheckBox cb_pressao_arterial, cb_glicemia,
@@ -69,11 +71,9 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
 
     private void recuperDadosPaciente() {
         Bundle bundle = getIntent().getExtras();
-        id = bundle.getInt("id");
 
-        Log.i(AppUtil.LOG_APP, "" + id);
-
-        dados.add(pessoaController.getBuscaPessoaId(id));
+        idPaciente = bundle.getInt("id");
+        dados.add(pessoaController.getBuscaPessoaId(idPaciente));
 
         for (Pessoa pessoa1 : dados) {
             tv_nome.setText(pessoa1.getNome());
@@ -120,6 +120,7 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
         cb_dengue = findViewById(R.id.cb_dengue);
         cb_hep_b = findViewById(R.id.cb_hep_b);
         cb_sifilis = findViewById(R.id.cb_sifilis);
+        ib_voltar = findViewById(R.id.ib_voltar);
 
         rg_turno.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
@@ -156,6 +157,12 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
     }
     private void cliqueBotao() {
 
+        ib_voltar.setOnClickListener(view -> {
+            Intent intent = new Intent(this,ListarPacienteActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
         btn_cadastrar_paciente.setOnClickListener(view -> {
             Toast.makeText(this,""+validaDados(),Toast.LENGTH_LONG).show();
 
@@ -168,7 +175,7 @@ public class CadastroProcedimentosActivity extends AppCompatActivity {
                     Log.i(AppUtil.LOG_APP,"Procedimentos"+procedimentosDia);
                     Consulta procedimentos = new Consulta();
 
-                    procedimentos.setFkidPessoaConsulta(id);
+                    procedimentos.setFkidPessoaConsulta(idPaciente);
                     procedimentos.setData(AppUtil.getDataAtualFormatoAmericanoParaDB(tv_data_atual.getText().toString()));
                     procedimentos.setTurno(sTurno);
                     procedimentos.setLocal(sp_local.getSelectedItem().toString());

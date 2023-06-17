@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -36,7 +37,7 @@ public class CadastroPacienteActivity extends AppCompatActivity {
     private RadioGroup rg_sexo, rg_cor;
     private ImageView iv_data_nascimento;
     private Spinner sp_logradouro, sp_Bairro;
-    private String sLougradouro = "";
+
     private TextView txt_cidade, txt_estado, txt_cep;
 
     private RadioButton rb_masculino, rb_feminino, rb_branco, rb_preto, rb_pardo;
@@ -45,7 +46,9 @@ public class CadastroPacienteActivity extends AppCompatActivity {
     private boolean bSexo;
     private String sCor;
     private boolean bCor;
-    private String sBairro = "";
+
+    private ImageView ib_voltar;
+
 
     private PessoaController pessoaController;
     private EnderecoController enderecoController;
@@ -71,7 +74,7 @@ public class CadastroPacienteActivity extends AppCompatActivity {
         text_toolbar.setText("CADASTRO DADOS PACIENTE");
         text_toolbar.setTextSize(18);
 
-
+        ib_voltar = findViewById(R.id.ib_voltar);
         edt_cpf = findViewById(R.id.edt_cpf_endereco);
         edt_nome = findViewById(R.id.edt_nome_endereco);
         edt_data_nascimento = findViewById(R.id.edt_data_nascimento_endereco);
@@ -203,7 +206,11 @@ public class CadastroPacienteActivity extends AppCompatActivity {
     }
 
     private void cliqueBotao() {
-
+        ib_voltar.setOnClickListener(view -> {
+            Intent intent = new Intent(this,ListarPacienteActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         btn_salvar_dados.setOnClickListener(view -> {
 

@@ -23,23 +23,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void iniciaComponente(){
+
         btn_cad_procedimento = findViewById(R.id.btn_cad_procedimento);
         btn_relatorio_bpa = findViewById(R.id.btn_relatorio_bpa);
         btn_relatorio_pab = findViewById(R.id.btn_relatorio_pab);
 
     }
     private void cliqueBotao(){
+
         btn_cad_procedimento.setOnClickListener(view -> {
             Intent intent = new Intent(this, ListarProcedimentosActivity.class);
             startActivity(intent);
+            finish();
         });
         btn_relatorio_bpa.setOnClickListener(view -> {
            Intent intent = new Intent(this, RelatorioBpaActivity.class);
            startActivity(intent);
+            finish();
         });
         btn_relatorio_pab.setOnClickListener(view -> {
             Intent intent = new Intent(this, RelatorioPabActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 }

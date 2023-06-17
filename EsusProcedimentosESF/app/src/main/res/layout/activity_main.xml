@@ -26,39 +26,23 @@
 
             <android.widget.Button
                 android:id="@+id/btn_cad_procedimento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
+                style="@style/configButtonMain"
                 android:drawableLeft="@drawable/icc_add_proc_32"
-                android:padding="16dp"
-                android:text="Cadastrar Procedimentos "
-                android:textAllCaps="false"
-                android:textSize="16sp" />
+                android:text="   Procedimentos " />
 
             <android.widget.Button
                 android:id="@+id/btn_relatorio_pab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
+                style="@style/configButtonMain"
                 android:drawableLeft="@drawable/ic_relatorio_32"
-                android:padding="16dp"
-                android:text="Relatório Pab"
-                android:textAllCaps="false"
-                android:textSize="16sp" />
+                android:text="   Relatório Pab   " />
 
             <android.widget.Button
                 android:id="@+id/btn_relatorio_bpa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
+                style="@style/configButtonMain"
                 android:drawableLeft="@drawable/ic_relatorio_32"
-                android:padding="16dp"
-                android:text="Relatório Bpa"
-                android:textAllCaps="false"
-                android:textSize="16sp" />
+                android:text="    Relatório Bpa "
+
+                />
 
 
         </LinearLayout>

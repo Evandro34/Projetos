@@ -15,6 +15,7 @@ import devandroid.evandro.esusprocedimentosesf.adapter.ViewPagerAdapter;
 import devandroid.evandro.esusprocedimentosesf.fragments.ManhaFragment;
 import devandroid.evandro.esusprocedimentosesf.fragments.NoiteFragment;
 import devandroid.evandro.esusprocedimentosesf.fragments.TardeFragment;
+import devandroid.evandro.esusprocedimentosesf.fragments.TesteFragment;
 import devandroid.evandro.esusprocedimentosesf.fragments.TotalFragment;
 
 public class ListarProcedimentosActivity extends AppCompatActivity {
@@ -37,6 +38,7 @@ public class ListarProcedimentosActivity extends AppCompatActivity {
     private void configTabsLayout() {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
+        viewPagerAdapter.addFragment(new TesteFragment(), "TESTE");
         viewPagerAdapter.addFragment(new ManhaFragment(), "Manhã");
         viewPagerAdapter.addFragment(new TardeFragment(), "Tarde");
         viewPagerAdapter.addFragment(new NoiteFragment(), "Noite");
@@ -50,6 +52,7 @@ public class ListarProcedimentosActivity extends AppCompatActivity {
     private void iniciaComponentes() {
 
         ib_Add = findViewById(R.id.ib_add);
+        ib_voltar = findViewById(R.id.ib_voltar);
 
         TextView text_toolbar = findViewById(R.id.text_toolbar);
         text_toolbar.setText("PROCEDIMENTOS");
@@ -61,9 +64,16 @@ public class ListarProcedimentosActivity extends AppCompatActivity {
     }
 
     private void cliqueBotao() {
+
         ib_Add.setOnClickListener(view -> {
             Intent intent = new Intent(this,ListarPacienteActivity.class);
             startActivity(intent);
+            finish();
+        });
+        ib_voltar.setOnClickListener(view -> {
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }

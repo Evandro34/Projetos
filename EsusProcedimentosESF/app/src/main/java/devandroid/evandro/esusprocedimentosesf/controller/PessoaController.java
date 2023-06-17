@@ -231,13 +231,13 @@ public class PessoaController {
 
     }
 
-    public List<Consulta> getCpfCurativo(String dataInicio, String dataFinal) {
+    public List<Consulta> getCpfCurativo(String dataInicio, String dataFinal, String procedimentos) {
 
         List<Consulta> consultaList = new ArrayList<>();
 //SELECT  distinct fkcpfPaciente FROM consulta WHERE data BETWEEN '2023-06-01'  And '2023-06-04' And procedimentos = 'Curativo'
 
 
-        String buscarCpf2 = "SELECT DISTINCT " + ConsultaDM.FKIDPESSOACONSULTA + " FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.DATA + " BETWEEN " + "'" + dataInicio + "'" + " AND " + "'" + dataFinal + "'" + " AND " + ConsultaDM.PROCEDIMENTO + " = " + "'Curativo'";
+        String buscarCpf2 = "SELECT DISTINCT " + ConsultaDM.FKIDPESSOACONSULTA + " FROM " + ConsultaDM.TABELA + " WHERE " + ConsultaDM.DATA + " BETWEEN " + "'" + dataInicio + "'" + " AND " + "'" + dataFinal + "'" + " AND " + ConsultaDM.PROCEDIMENTO + " = " + "'" + procedimentos + "'";
 
         Log.i("TESTE2", "" + buscarCpf2);
 
@@ -257,7 +257,7 @@ public class PessoaController {
 
     }
 
-    public Pessoa getTodasDataCurativoPorCpf(int id, String dataInicial, String dataFinal) {
+    public Pessoa getTodasDataCurativoPorCpf(int id, String dataInicial, String dataFinal,String procedimento) {
 
         /* fkcpfendereco,
         nome,datanascimento,
@@ -270,7 +270,8 @@ public class PessoaController {
                 + PessoaDM.SEXO + ", " + PessoaDM.COR + ", " + EnderecoDM.LOGRADOURO + ", " + EnderecoDM.ENDERECO + ", "
                 + EnderecoDM.NUMERO + ", " + EnderecoDM.BAIRRO + ", " + EnderecoDM.CIDADE + ", " + EnderecoDM.CEP + " FROM "
                 + EnderecoDM.TABELA + " INNER JOIN " + PessoaDM.TABELA + " ON "
-                + EnderecoDM.FKIDPESSOAENDERECO + " = " + PessoaDM.IDPESSOA + " WHERE  " + EnderecoDM.FKIDPESSOAENDERECO + " = " + "'" + id + "'";
+                + EnderecoDM.FKIDPESSOAENDERECO + " = " + PessoaDM.IDPESSOA + " INNER JOIN " + ConsultaDM.TABELA + " ON "
+                + PessoaDM.IDPESSOA + " = " + ConsultaDM.FKIDPESSOACONSULTA +  " WHERE  " + EnderecoDM.FKIDPESSOAENDERECO + " = " + "'" + id + "'";
 
         Cursor cursor = read.rawQuery(buscarCpf, null);
 
@@ -307,18 +308,19 @@ public class PessoaController {
             endereco.setCidade(cidade);
             endereco.setCep(cep);
             paciente.setEnderecoPaciente(endereco);
-            consulta.setData(listData(id, dataInicial, dataFinal));
+            consulta.setProcedimentos(procedimento);
+            consulta.setData(listData(id, dataInicial, dataFinal,procedimento));
             paciente.setConsultaPaciente(consulta);
 
         }
         return paciente;
 
     }
-    private String listData(int  id, String dataInicial, String dataFinal) {
+    private String listData(int  id, String dataInicial, String dataFinal,String procedimento) {
 
         String buscarCpf = "SELECT  distinct " + ConsultaDM.DATA
                 + " FROM " + ConsultaDM.TABELA + " WHERE "
-                + ConsultaDM.FKIDPESSOACONSULTA + " = " + "'" + id + "'"+" and "+ ConsultaDM.DATA + " BETWEEN " + "'" + dataInicial + "'" + " AND " + "'" + dataFinal + "'" + " And " + ConsultaDM.PROCEDIMENTO + " = 'Curativo'";
+                + ConsultaDM.FKIDPESSOACONSULTA + " = " + "'" + id + "'"+" and "+ ConsultaDM.DATA + " BETWEEN " + "'" + dataInicial + "'" + " AND " + "'" + dataFinal + "'" + " And " + ConsultaDM.PROCEDIMENTO + " = "+"'"+procedimento+"'";
 
         Cursor cursor = read.rawQuery(buscarCpf, null);
         Log.i("TESTE2", "" + buscarCpf);

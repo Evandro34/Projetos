@@ -1,17 +1,18 @@
 package devandroid.evandro.esusprocedimentosesf.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
@@ -22,8 +23,8 @@ import devandroid.evandro.esusprocedimentosesf.controller.PessoaController;
 public class RelatorioPabActivity extends AppCompatActivity {
 
     private static EditText ed_data_inicial_pab, ed_data_final_pab;
-    private ImageView iv_filtrar;
-    private  ImageView iv_data_inicial_pab ;
+    private ImageView iv_filtrar, ib_voltar;
+    private ImageView iv_data_inicial_pab;
     private ImageView iv_data_final_pab;
     private TextView tv_total_pa, tv_total_glicemia, tv_covid, tv_total_visita, tv_total_Nebulizacao, tv_total_r_pontos, tv_HIV, tv_hep_c, tv_hep_b, tv_sifilis, tv_dengue;
 
@@ -41,15 +42,25 @@ public class RelatorioPabActivity extends AppCompatActivity {
         iniciaComponentes();
 
 
+        cliqueBotao();
 
+    }
+
+    private void cliqueBotao() {
+
+        ib_voltar.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
         iv_data_inicial_pab.setOnClickListener(view -> {
-            DialogFragment dialogFragment = new RelatorioPabActivity.DatePicker();
-            dialogFragment.show(getSupportFragmentManager(),"DataInicial");
+            DialogFragment dialogFragment = new DatePicker();
+            dialogFragment.show(getSupportFragmentManager(), "DataInicial");
 
         });
         iv_data_final_pab.setOnClickListener(view -> {
-            DialogFragment dialogFragment = new RelatorioPabActivity.DatePicker();
-            dialogFragment.show(getSupportFragmentManager(),"DataFinal");
+            DialogFragment dialogFragment = new DatePicker();
+            dialogFragment.show(getSupportFragmentManager(), "DataFinal");
         });
 
 
@@ -65,9 +76,13 @@ public class RelatorioPabActivity extends AppCompatActivity {
             }
 
         });
-
     }
+
     private void iniciaComponentes() {
+        TextView text_toolbar = findViewById(R.id.text_toolbar);
+        text_toolbar.setText("RELATORIO PAB");
+        text_toolbar.setTextSize(18);
+        ib_voltar = findViewById(R.id.ib_voltar);
         ed_data_inicial_pab = findViewById(R.id.ed_data_inicial_pab);
         ed_data_final_pab = findViewById(R.id.ed_data_final_pab);
         iv_data_final_pab = findViewById(R.id.iv_data_final_pab);

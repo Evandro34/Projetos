@@ -31,9 +31,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/iet_cpf_cns"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_edit"
+                style="@style/configTextInputEditText"
                 android:hint="Cns/Cpf" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -44,9 +42,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/iet_nome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_edit"
+                style="@style/configTextInputEditText"
                 android:hint="Nome" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,21 +60,14 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/iet_data_nascimento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/configTextInputEditText"
                     android:enabled="false"
-                    android:background="@drawable/bg_edit"
                     android:hint="Data Nascimento" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
                 android:id="@+id/iv_data_nascimento"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@color/verde_1200"
-                android:padding="2dp"
+                style="@style/configImagemView"
                 app:srcCompat="@android:drawable/ic_menu_month" />
 
         </LinearLayout>

@@ -3,7 +3,6 @@ package devandroid.evandro.esusprocedimentosesf.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +15,11 @@ import devandroid.evandro.esusprocedimentosesf.R;
 import devandroid.evandro.esusprocedimentosesf.api.AppUtil;
 import devandroid.evandro.esusprocedimentosesf.model.Consulta;
 
-public class ManhaAdapter  extends RecyclerView.Adapter<ManhaAdapter.MyViewHolder> {
+public class TesteAdapter extends RecyclerView.Adapter<TesteAdapter.MyViewHolder> {
 
     private List<Consulta> consultaList ;
 
-    public ManhaAdapter(List<Consulta> consultaList) {
+    public TesteAdapter(List<Consulta> consultaList) {
         this.consultaList = consultaList;
     }
 

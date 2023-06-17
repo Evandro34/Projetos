@@ -1,18 +1,20 @@
 package devandroid.evandro.esusprocedimentosesf.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,7 +31,7 @@ public class RelatorioBpaActivity extends AppCompatActivity {
 
     private RecyclerView rv_bpa;
     private static EditText ed_data_final, ed_data_inicial;
-    private ImageView iv_filtrar, iv_data_inicial, iv_data_final;
+    private ImageView iv_filtrar, iv_data_inicial, iv_data_final, ib_voltar;
 
     private List<Pessoa> consultaList;
     PessoaController pacienteController;
@@ -48,13 +50,23 @@ public class RelatorioBpaActivity extends AppCompatActivity {
         iniciaComponente();
 
 
+        cliqueBotao();
+    }
+
+    private void cliqueBotao() {
+
+        ib_voltar.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
         iv_data_inicial.setOnClickListener(view -> {
             DialogFragment dialogFragment = new DatePicker();
-            dialogFragment.show(getSupportFragmentManager(),"DataInicial");
+            dialogFragment.show(getSupportFragmentManager(), "DataInicial");
         });
         iv_data_final.setOnClickListener(view -> {
             DialogFragment dialogFragment = new DatePicker();
-            dialogFragment.show(getSupportFragmentManager(),"DataFinal");
+            dialogFragment.show(getSupportFragmentManager(), "DataFinal");
         });
 
         iv_filtrar.setOnClickListener(view -> {
@@ -71,6 +83,10 @@ public class RelatorioBpaActivity extends AppCompatActivity {
     }
 
     private void iniciaComponente() {
+        TextView text_toolbar = findViewById(R.id.text_toolbar);
+        text_toolbar.setText("RELATORIO BPA");
+        text_toolbar.setTextSize(18);
+        ib_voltar = findViewById(R.id.ib_voltar);
         rv_bpa = findViewById(R.id.rv_bpa);
         ed_data_final = findViewById(R.id.ed_data_final);
         ed_data_inicial = findViewById(R.id.ed_data_inicial);
@@ -85,8 +101,6 @@ public class RelatorioBpaActivity extends AppCompatActivity {
         rv_bpa.setHasFixedSize(true);
         getCpf(dataInicial, dataFinal).clear();
         consultaList = getCpf(dataInicial, dataFinal);
-        //getCpf("2023-06-01", "2023-06-05").clear();
-        //consultaList = getCpf("2023-06-01", "2023-06-05");
         bpaAdapter = new BpaAdapter(consultaList);
         rv_bpa.setAdapter(bpaAdapter);
 
@@ -97,19 +111,27 @@ public class RelatorioBpaActivity extends AppCompatActivity {
 
         List<Pessoa> consultas = new ArrayList<>();
 
-        List<Integer> cpf = new ArrayList<>();
+        List<Integer> cpf ;
+
+        String procedi[]={AppUtil.COVID,AppUtil.CURATIVO,AppUtil.DENGUE,
+                AppUtil.HEPATITE_C,AppUtil.HEPETITE_B,AppUtil.HIV,AppUtil.SIFILIS};
 
 
-        for (Consulta consulta : pacienteController.getCpfCurativo(dataInicial, dataFinal)
-        ) {
-            cpf.add(consulta.getFkidPessoaConsulta());
+        for (int j = 0; j <procedi.length ; j++) {
+
+            cpf = new ArrayList<>();
+
+            for (Consulta consulta : pacienteController.getCpfCurativo(dataInicial, dataFinal,procedi[j])
+            ) {
+                cpf.add(consulta.getFkidPessoaConsulta());
+
+            }
+            for (int i = 0; i < cpf.size(); i++) {
+
+                consultas.add(pacienteController.getTodasDataCurativoPorCpf(cpf.get(i), dataInicial, dataFinal,procedi[j]));
+            }
 
         }
-        for (int i = 0; i < cpf.size(); i++) {
-
-            consultas.add(pacienteController.getTodasDataCurativoPorCpf(cpf.get(i), dataInicial, dataFinal));
-        }
-
         return consultas;
     }
 

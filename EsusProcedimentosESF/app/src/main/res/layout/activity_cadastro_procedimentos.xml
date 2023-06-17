@@ -27,9 +27,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tv_data_atual"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_edit"
+            style="@style/configTextInputEditTextCadProc"
             android:hint="Data Atual" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -117,10 +115,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_cpf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:background="@drawable/bg_edit"
+                    style="@style/configTextInputEditTextCadProc"
                     android:hint="CPF" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -136,10 +131,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_nome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:background="@drawable/bg_edit"
+                    style="@style/configTextInputEditTextCadProc"
                     android:hint="Nome" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -155,10 +147,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_data_nascimento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:background="@drawable/bg_edit"
+                    style="@style/configTextInputEditTextCadProc"
                     android:hint="Data Nascimento" />
 
             </com.google.android.material.textfield.TextInputLayout><com.google.android.material.textfield.TextInputLayout
@@ -173,10 +162,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_sexo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:background="@drawable/bg_edit"
+                    style="@style/configTextInputEditTextCadProc"
                     android:hint="Sexo" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -233,23 +219,17 @@
 
                     <CheckBox
                         android:id="@+id/cb_pressao_arterial"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Pressão Arterial" />
 
                     <CheckBox
                         android:id="@+id/cb_glicemia"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Glicemia" />
 
                     <CheckBox
                         android:id="@+id/cb_nebulizacao"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Nebulizacão" />
 
                 </LinearLayout>
@@ -263,23 +243,17 @@
 
                     <CheckBox
                         android:id="@+id/cb_altura"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Altura" />
 
                     <CheckBox
                         android:id="@+id/cb_Peso"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Peso" />
 
                     <CheckBox
                         android:id="@+id/cb_Temperatura"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Temperatura" />
 
                 </LinearLayout>
@@ -293,23 +267,17 @@
 
                     <CheckBox
                         android:id="@+id/cb_curativo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Curativo" />
 
                     <CheckBox
                         android:id="@+id/cb_r_de_pontos"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="R_de_Pontos" />
 
                     <CheckBox
                         android:id="@+id/cb_visita"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Visita" />
 
                 </LinearLayout>
@@ -323,23 +291,17 @@
 
                     <CheckBox
                         android:id="@+id/cb_covid"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Covid" />
 
                     <CheckBox
                         android:id="@+id/cb_hep_c"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Hep_C" />
 
                     <CheckBox
                         android:id="@+id/cb_hiv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="HIV" />
 
                 </LinearLayout>
@@ -353,23 +315,17 @@
 
                     <CheckBox
                         android:id="@+id/cb_dengue"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Dengue" />
 
                     <CheckBox
                         android:id="@+id/cb_hep_b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Hep_B" />
 
                     <CheckBox
                         android:id="@+id/cb_sifilis"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        style="@style/configCkeckbox"
                         android:text="Sifilis" />
 
                 </LinearLayout>
@@ -379,14 +335,9 @@
 
             <android.widget.Button
                 android:id="@+id/btn_cadastrar_paciente"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
+                style="@style/configButtonMain"
                 android:text="Cadastrar Procedimentos"
-                android:textAllCaps="false"
-                android:textColor="@color/cor_principal"
-                android:textSize="16sp" />
+                android:textColor="@color/cor_principal" />
 
 
         </LinearLayout>

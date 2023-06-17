@@ -36,9 +36,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_cpf_endereco"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edit"
+                    style="@style/configTextInputEditText"
                     android:hint="CPF" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,10 +46,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_nome_endereco"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style ="@style/configTextInputEditText"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_edit"
+
                     android:hint="Nome" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,12 +75,9 @@
 
                 <ImageView
                     android:id="@+id/iv_data_nascimento"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
+                    style="@style/configImagemView"
                     android:background="@color/verde_1200"
-                    android:padding="2dp"
+
                     app:srcCompat="@android:drawable/ic_menu_month" />
 
             </LinearLayout>
@@ -223,10 +217,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_endereco"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style ="@style/configTextInputEditTextCadProc"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_edit"
                     android:hint="Endereço" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -236,10 +228,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_Numero"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style ="@style/configTextInputEditTextCadProc"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_edit"
                     android:hint="Numero" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -309,7 +299,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_btn"
-                android:onClick="validaDados"
                 android:text="Buscar Paciente"
                 android:textAllCaps="false"
                 android:textColor="@color/cor_principal"

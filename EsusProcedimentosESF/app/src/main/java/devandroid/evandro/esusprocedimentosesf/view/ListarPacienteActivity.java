@@ -5,11 +5,11 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +38,7 @@ public class ListarPacienteActivity extends AppCompatActivity {
     private PessoaController pessoaController;
     private static TextInputEditText iet_data_nascimento;
     private ImageView iv_data_nascimento;
-    private ImageButton ib_add;
+    private ImageButton ib_add,ib_voltar;
     private Button btn_pesquisar;
     private RecyclerView rv_paciente;
 
@@ -56,6 +56,12 @@ public class ListarPacienteActivity extends AppCompatActivity {
     }
 
     private void acoesdoClique() {
+
+        ib_voltar.setOnClickListener(view -> {
+            Intent intent = new Intent(this,ListarProcedimentosActivity.class);
+            startActivity(intent);
+            finish();
+        });
         iv_data_nascimento.setOnClickListener(view -> {
             DialogFragment dialogFragment = new DatePicker();
             dialogFragment.show(getSupportFragmentManager(), "DataInicial");
@@ -63,21 +69,21 @@ public class ListarPacienteActivity extends AppCompatActivity {
 
 
         btn_pesquisar.setOnClickListener(view -> {
-            Pessoa pessoa = new Pessoa();
-            if (!iet_cpf_cns.getText().toString().isEmpty() && pessoaController.verificaTotalDeRegistroLocalizado(iet_cpf_cns.getText().toString())>0){
 
+            if (!iet_cpf_cns.getText().toString().isEmpty() && pessoaController.verificaTotalDeRegistroLocalizado(iet_cpf_cns.getText().toString())>0){
                 consultaList = getCpf(iet_cpf_cns.getText().toString());
                 configRecyclerView();
             } else if (!iet_nome.getText().toString().isEmpty() && !iet_data_nascimento.getText().toString().isEmpty()  && pessoaController.verificaTotalDeRegistroLocalizado(iet_nome.getText().toString(),iet_data_nascimento.getText().toString())>0) {
                 consultaList = getCpf(iet_nome.getText().toString(), iet_data_nascimento.getText().toString());
                 configRecyclerView();
             } else {
-                Toast.makeText(this,"Pessoa Nao Encontrada Adicione no Icone vermelho ",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Pessoa não encontrada adicione no ICONE VERMELHO COM MAIS",Toast.LENGTH_LONG).show();
                 ib_add.setActivated(true);
                 ib_add.setVisibility(View.VISIBLE);
                 ib_add.setOnClickListener(view1 -> {
                     Intent intent = new Intent(this, CadastroPacienteActivity.class);
                     startActivity(intent);
+                    finish();
                 });
 
             }
@@ -96,6 +102,9 @@ public class ListarPacienteActivity extends AppCompatActivity {
         ib_add = findViewById(R.id.ib_add);
         ib_add.setActivated(false);
         ib_add.setVisibility(View.INVISIBLE);
+        ib_voltar = findViewById(R.id.ib_voltar);
+        TextView text_toolbar = findViewById(R.id.text_toolbar);
+        text_toolbar.setText("PESQUISAR PACIENTE");
     }
 
     public static class DatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {

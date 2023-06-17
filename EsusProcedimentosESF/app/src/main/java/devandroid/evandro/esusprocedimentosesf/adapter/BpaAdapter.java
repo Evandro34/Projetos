@@ -26,7 +26,7 @@ public class BpaAdapter extends RecyclerView.Adapter<BpaAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemView  = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bpa,parent,false);
+        View itemView  = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bpa2,parent,false);
         return new MyViewHolder(itemView) ;
     }
 
@@ -46,6 +46,7 @@ public class BpaAdapter extends RecyclerView.Adapter<BpaAdapter.MyViewHolder> {
        holder.tv_bairro.setText(paciente.getEnderecoPaciente().getBairro());
        holder.tv_cidade.setText(paciente.getEnderecoPaciente().getCidade());
        holder.tv_cep.setText(paciente.getEnderecoPaciente().getCep());
+       holder.tv_procedimentos.setText(paciente.getConsultaPaciente().getProcedimentos());
        holder.tv_data.setText(paciente.getConsultaPaciente().getData());
 
     }
@@ -59,7 +60,7 @@ public class BpaAdapter extends RecyclerView.Adapter<BpaAdapter.MyViewHolder> {
 
 
         private TextView tv_nome,tv_cpf,tv_data_nascimento,tv_sexo,tv_cor,
-                tv_logradouro,tv_endereco,tv_numero,tv_bairro,tv_cidade,tv_cep,tv_data;
+                tv_logradouro,tv_endereco,tv_numero,tv_bairro,tv_cidade,tv_cep,tv_data,tv_procedimentos;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -76,6 +77,7 @@ public class BpaAdapter extends RecyclerView.Adapter<BpaAdapter.MyViewHolder> {
             tv_bairro = itemView.findViewById(R.id.tv_bairro);
             tv_cidade = itemView.findViewById(R.id.tv_cidade);
             tv_cep =itemView.findViewById(R.id.tv_cep);
+            tv_procedimentos =itemView.findViewById(R.id.tv_procedimentos);
 
         }
     }
