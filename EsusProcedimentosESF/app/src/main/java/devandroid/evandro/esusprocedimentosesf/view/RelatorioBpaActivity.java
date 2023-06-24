@@ -111,7 +111,8 @@ public class RelatorioBpaActivity extends AppCompatActivity {
 
         List<Pessoa> consultas = new ArrayList<>();
 
-        List<Integer> cpf ;
+        List<Integer> idPaciente ;
+
 
         String procedi[]={AppUtil.COVID,AppUtil.CURATIVO,AppUtil.DENGUE,
                 AppUtil.HEPATITE_C,AppUtil.HEPETITE_B,AppUtil.HIV,AppUtil.SIFILIS};
@@ -119,16 +120,16 @@ public class RelatorioBpaActivity extends AppCompatActivity {
 
         for (int j = 0; j <procedi.length ; j++) {
 
-            cpf = new ArrayList<>();
+            idPaciente = new ArrayList<>();
 
             for (Consulta consulta : pacienteController.getCpfCurativo(dataInicial, dataFinal,procedi[j])
             ) {
-                cpf.add(consulta.getFkidPessoaConsulta());
+                idPaciente.add(consulta.getFkidPessoaConsulta());
 
             }
-            for (int i = 0; i < cpf.size(); i++) {
+            for (int i = 0; i < idPaciente.size(); i++) {
 
-                consultas.add(pacienteController.getTodasDataCurativoPorCpf(cpf.get(i), dataInicial, dataFinal,procedi[j]));
+                consultas.add(pacienteController.getTodasDataCurativoPorCpf(idPaciente.get(i), dataInicial, dataFinal,procedi[j]));
             }
 
         }

@@ -14,23 +14,13 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="configButtonMain">
 
-        <item name="android:textSize">16sp</item>
+
+    <style name="TextInputEditText">
+
+        <item name="android:background">@drawable/bg_text2</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">16dp</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:background">@drawable/bg_btn</item>
-        <item name="android:textAllCaps">true</item>
-
-    </style>
-
-    <style name="configTextInputEditText">
-
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/bg_edit</item>
         <item name="android:textAllCaps">true</item>
 
     </style>
@@ -55,7 +45,7 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/bg_edit</item>
+        <item name="android:background">@drawable/bg_text2</item>
         <item name="android:enabled">false</item>
 
     </style>
@@ -69,6 +59,52 @@
     <style name="EditTextHintStyle" parent="Theme.EsusProcedimentosESF">
         <item name="android:textColor">#3F51B5</item>
     </style>
+
+
+
+
+    <style name="TextViewToolbar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="ImagemButton">
+        <item name="android:layout_width">wrap_content</item>
+         <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+    <style name="btn_verde">
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/bg_btn_verde</item>
+        <item name="android:textAllCaps">true</item>
+
+    </style>
+    <style name="TextViewTitulo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="TextViewResultado">
+        <item name="android:padding">4dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+
 
 
 </resources>

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cor_principal"
     tools:context=".view.ListarPacienteActivity">
 
     <include layout="@layout/toolbar"
@@ -27,11 +26,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginTop="3dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/iet_cpf_cns"
-                style="@style/configTextInputEditText"
+                android:background="@drawable/bg_text2"
+                style="@style/TextInputEditText"
+                android:inputType="number"
                 android:hint="Cns/Cpf" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -42,7 +44,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/iet_nome"
-                style="@style/configTextInputEditText"
+                style="@style/TextInputEditText"
+                android:inputType="text"
                 android:hint="Nome" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +63,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/iet_data_nascimento"
-                    style="@style/configTextInputEditText"
+                    style="@style/TextInputEditText"
                     android:enabled="false"
                     android:hint="Data Nascimento" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -72,18 +75,21 @@
 
         </LinearLayout>
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn_pesquisar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/btn_verde"
             android:text="Buscar Pessoa" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_paciente"
-            tools:listitem="@layout/dado_pessoa"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
+        <com.tsuryo.swipeablerv.SwipeableRecyclerView
+            android:id="@+id/rv_paciente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leftBgColor="@android:color/white"
+            app:leftImage="@drawable/ic_add_32"
+            app:rightBgColor="@color/cor_principal"
+            app:rightImage="@drawable/ic_edit"
+            tools:listitem="@layout/item_produto2" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

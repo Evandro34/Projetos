@@ -3,16 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
+    android:background="@drawable/bg_text2"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/cor_principal">
+    >
 
     <ImageButton
         android:id="@+id/ib_voltar"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@android:color/transparent"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        style="@style/ImagemButton"
         android:src="@drawable/ic_voltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,10 +17,7 @@
 
     <TextView
         android:id="@+id/text_toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        style="@style/TextViewToolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -33,6 +33,7 @@ public class PessoaController {
 
         ContentValues cv = new ContentValues();
         cv.put(PessoaDM.CPF, pessoa.getCpf());
+        cv.put(PessoaDM.CNS, pessoa.getCns());
         cv.put(PessoaDM.NOME, pessoa.getNome());
         cv.put(PessoaDM.DATA_NASCIMENTO, pessoa.getData_nascimento());
         cv.put(PessoaDM.SEXO, pessoa.getSexo());
@@ -47,6 +48,29 @@ public class PessoaController {
             Log.i("ERROR", "Erro a salvar " + e.getMessage());
         }
 
+    }
+
+    public void atualizaDados(Pessoa produto){
+        ContentValues cv = new ContentValues();
+
+        cv.put(PessoaDM.CPF,produto.getCpf());
+        cv.put(PessoaDM.CNS,produto.getCns());
+        cv.put(PessoaDM.COR,produto.getCor());
+        cv.put(PessoaDM.DATA_NASCIMENTO,produto.getData_nascimento());
+        cv.put(PessoaDM.SEXO,produto.getSexo());
+
+        String where = "idPessoa=?";
+        String[] args  = {String.valueOf(produto.getIdPessoa())};
+
+        try {
+
+            write.update(PessoaDM.TABELA,cv,where,args);
+            //write.close();
+
+        }catch (Exception e) {
+            Log.i("ERROR", "Erro atualizar produto" + e.getMessage());
+
+        }
     }
 
     public int getLastPK() {
@@ -97,6 +121,7 @@ public class PessoaController {
                 if (cursor.getInt(cursor.getColumnIndexOrThrow(PessoaDM.IDPESSOA)) > 0) {
                     pessoa.setIdPessoa(cursor.getInt(cursor.getColumnIndexOrThrow(PessoaDM.IDPESSOA)));
                     pessoa.setCpf(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CPF)));
+                    pessoa.setCns(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CNS)));
                     pessoa.setNome(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.NOME)));
                     pessoa.setData_nascimento(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.DATA_NASCIMENTO)));
                     pessoa.setCor(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.COR)));
@@ -132,6 +157,7 @@ public class PessoaController {
 
                 pessoa.setIdPessoa(cursor.getInt(cursor.getColumnIndexOrThrow(PessoaDM.IDPESSOA)));
                 pessoa.setCpf(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CPF)));
+                pessoa.setCns(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CNS)));
                 pessoa.setNome(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.NOME)));
                 pessoa.setData_nascimento(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.DATA_NASCIMENTO)));
                 pessoa.setCor(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.COR)));
@@ -168,6 +194,7 @@ public class PessoaController {
 
                 pessoa.setIdPessoa(cursor.getInt(cursor.getColumnIndexOrThrow(PessoaDM.IDPESSOA)));
                 pessoa.setCpf(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CPF)));
+                pessoa.setCns(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CNS)));
                 pessoa.setNome(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.NOME)));
                 pessoa.setData_nascimento(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.DATA_NASCIMENTO)));
                 pessoa.setCor(cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.COR)));
@@ -266,7 +293,7 @@ public class PessoaController {
         FROM endereco INNER JOIN paciente ON fkcpfendereco = cpf where fkcpfendereco = '1'";
          */
 
-        String buscarCpf = "SELECT " + PessoaDM.CPF + ", " + PessoaDM.NOME + ", " + PessoaDM.DATA_NASCIMENTO + ", "
+        String buscarCpf = "SELECT " + PessoaDM.CPF + ", " + PessoaDM.CNS + ", "+ PessoaDM.NOME + ", " + PessoaDM.DATA_NASCIMENTO + ", "
                 + PessoaDM.SEXO + ", " + PessoaDM.COR + ", " + EnderecoDM.LOGRADOURO + ", " + EnderecoDM.ENDERECO + ", "
                 + EnderecoDM.NUMERO + ", " + EnderecoDM.BAIRRO + ", " + EnderecoDM.CIDADE + ", " + EnderecoDM.CEP + " FROM "
                 + EnderecoDM.TABELA + " INNER JOIN " + PessoaDM.TABELA + " ON "
@@ -284,6 +311,7 @@ public class PessoaController {
 
 
             String cpf = cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CPF));
+            String cns = cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CNS));
             String nome = cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.NOME));
             String DN = cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.DATA_NASCIMENTO));
             String sexo = cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.SEXO));
@@ -297,6 +325,7 @@ public class PessoaController {
 
 
             paciente.setCpf(cpf);
+            paciente.setCns(cns);
             paciente.setNome(nome);
             paciente.setData_nascimento(DN);
             paciente.setSexo(sexo);

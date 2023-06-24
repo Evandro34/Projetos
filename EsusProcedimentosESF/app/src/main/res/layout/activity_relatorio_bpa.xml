@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cor_principal"
+
     tools:context=".view.RelatorioBpaActivity">
 
     <include
@@ -21,27 +21,21 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="8dp"
-        android:background="@drawable/bg_btn"
+        android:background="@drawable/bg_text2"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include2">
 
-        <TextView
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="DE" />
 
         <EditText
             android:id="@+id/ed_data_inicial"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_edit"
+            android:background="@drawable/bg_text2"
             android:hint="01-06-2023"
             android:enabled="false"
             android:textAlignment="center" />
@@ -55,20 +49,14 @@
             android:background="@color/cor_principal"
             app:srcCompat="@android:drawable/ic_menu_month" />
 
-        <TextView
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="ATÉ" />
 
         <EditText
             android:id="@+id/ed_data_final"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_edit"
+            android:background="@drawable/bg_text2"
             android:enabled="false"
             android:hint="01-06-2023"
             android:textAlignment="center" />
@@ -94,7 +82,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_bpa"
-        tools:listitem="@layout/item_bpa"
+        tools:listitem="@layout/item_bpa3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"

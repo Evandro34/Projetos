@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +32,7 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.MyViewHold
     @NonNull
     @Override
     public PessoaAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.dado_pessoa, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_produto2, parent, false);
         return new PessoaAdapter.MyViewHolder(itemView);
     }
 
@@ -41,12 +42,11 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.MyViewHold
         id =pessoa.getIdPessoa();
         holder.iet_id.setText(String.valueOf(pessoa.getIdPessoa()));
         holder.iet_cpf.setText(pessoa.getCpf());
+        holder.iet_cns.setText(pessoa.getCns());
         holder.iet_nome.setText(pessoa.getNome());
         holder.iet_sexo.setText(pessoa.getSexo());
         holder.iet_data_nascimento.setText(pessoa.getData_nascimento());
-
-
-        holder.btn_adicionar.setOnClickListener(this::onClick);
+        //holder.btn_adicionar.setOnClickListener(this::onClick);
 
 
     }
@@ -66,18 +66,19 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
 
-        TextInputEditText iet_id, iet_cpf, iet_nome, iet_data_nascimento, iet_sexo;
-        Button btn_adicionar;
+        TextView iet_id, iet_cpf,iet_cns, iet_nome, iet_data_nascimento, iet_sexo;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             iet_id = itemView.findViewById(R.id.iet_id);
             iet_cpf = itemView.findViewById(R.id.iet_cpf);
+            iet_cns = itemView.findViewById(R.id.iet_cns);
             iet_nome = itemView.findViewById(R.id.iet_nome);
             iet_data_nascimento = itemView.findViewById(R.id.iet_data_nascimento);
             iet_sexo = itemView.findViewById(R.id.iet_sexo);
-            btn_adicionar = itemView.findViewById(R.id.btn_cadastrar);
+
 
 
         }

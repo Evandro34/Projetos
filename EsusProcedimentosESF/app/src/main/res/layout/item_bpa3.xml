@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:background="@drawable/bg_text2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/TextViewTitulo"
+                android:text="CPF" />
+
+            <TextView
+                android:id="@+id/tv_cpf"
+                style="@style/TextViewResultado"
+                android:text="111.111.111-11" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/TextViewTitulo"
+                android:text="CNS" />
+
+            <TextView
+                android:id="@+id/tv_cns"
+                style="@style/TextViewResultado"
+                android:text="111.111.111-11" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/TextViewTitulo"
+                android:text="Nome    " />
+
+            <TextView
+                android:id="@+id/tv_nome"
+                style="@style/TextViewResultado"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+
+                style="@style/TextViewTitulo"
+                android:text="D.nasc" />
+
+            <TextView
+                android:id="@+id/tv_data_nascimento"
+                style="@style/TextViewResultado"
+                android:text="09/05/1987" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/TextViewTitulo"
+                android:text="SEXO   " />
+
+            <TextView
+                android:id="@+id/tv_sexo"
+                style="@style/TextViewResultado"
+                android:text="MASCULINO" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/TextViewTitulo"
+                android:text="COR " />
+
+            <TextView
+                android:id="@+id/tv_cor"
+                style="@style/TextViewResultado"
+                android:text="manha" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+
+                style="@style/TextViewTitulo"
+                android:text="logradouro " />
+
+            <TextView
+                android:id="@+id/tv_logradouro"
+                style="@style/TextViewResultado"
+                android:text="manha" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/TextViewTitulo"
+                android:text="endereço " />
+
+            <TextView
+                android:id="@+id/tv_endereco"
+                style="@style/TextViewResultado"
+                android:text="1-usb" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+
+                style="@style/TextViewTitulo"
+                android:text="numero   " />
+
+            <TextView
+                android:id="@+id/tv_numero"
+                style="@style/TextViewResultado"
+                android:text="MASCULINO" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+
+                style="@style/TextViewTitulo"
+                android:text="bairro   " />
+
+            <TextView
+                android:id="@+id/tv_bairro"
+                style="@style/TextViewResultado"
+                android:text="MASCULINO" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/TextViewTitulo"
+                android:text="cidade   " />
+
+            <TextView
+                android:id="@+id/tv_cidade"
+                style="@style/TextViewResultado"
+                android:text="MASCULINO" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/TextViewTitulo"
+                android:text="cep   " />
+
+            <TextView
+                android:id="@+id/tv_cep"
+                style="@style/TextViewResultado"
+                android:text="MASCULINO" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/TextViewTitulo"
+                android:text="procedimento" />
+
+            <TextView
+                android:id="@+id/tv_procedimentos"
+                style="@style/TextViewResultado"
+                android:text="MASCULINO" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text2"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:gravity="center"
+                android:text="Data do procedimentos"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_data"
+                style="@style/TextViewResultado"
+                android:background="@drawable/bg_text2"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

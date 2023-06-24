@@ -7,6 +7,7 @@ public class PessoaDM {
 
     public static final String IDPESSOA = "idPessoa";
     public static final String CPF = "cpf";
+    public static final String CNS = "cns";
     public static final String NOME = "nome";
     public static final String DATA_NASCIMENTO = "datanascimento";
     public static final String SEXO = "sexo";
@@ -19,6 +20,7 @@ public class PessoaDM {
         query = "CREATE TABLE IF NOT EXISTS " + TABELA + " ( ";
         query += IDPESSOA + " INTEGER PRIMARY KEY AUTOINCREMENT , ";
         query += CPF + " TEXT , ";
+        query += CNS + " TEXT , ";
         query += NOME + " TEXT, ";
         query += DATA_NASCIMENTO + " TEXT, ";
         query += SEXO + " TEXT, ";

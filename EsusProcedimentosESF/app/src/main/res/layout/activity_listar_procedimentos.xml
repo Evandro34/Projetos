@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg_text2"
     tools:context=".view.ListarProcedimentosActivity">
-    <include layout="@layout/toolbar"
+
+    <include layout="@layout/toolbar2"
         android:id="@+id/include_proc"/>
 
     <com.google.android.material.appbar.AppBarLayout
@@ -22,9 +24,9 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cor_principal"
-            app:tabIndicatorColor="@color/verde_1200"
+            app:tabIndicatorColor="@color/white"
             app:tabInlineLabel="true"
+            android:background="@drawable/bg_text"
             app:tabMode="fixed"
             app:tabTextColor="@color/white" />
 

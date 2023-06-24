@@ -74,7 +74,7 @@ public class ConsultaController {
         //"SELECT   fkcpfPaciente, datanascimento,sexo,turno, data, local FROM consulta INNER JOIN paciente ON fkcpfPaciente = cpf where fkcpfPaciente = '1' and  turno  ='noite'";
 
 
-        String buscarCpf = "SELECT " + ConsultaDM.DATA + ", " + ConsultaDM.TURNO + ", " + PessoaDM.CPF + ", " + PessoaDM.DATA_NASCIMENTO + ", " + PessoaDM.SEXO +
+        String buscarCpf = "SELECT " + ConsultaDM.DATA + ", " + ConsultaDM.TURNO + ", " + PessoaDM.CPF + ", "+PessoaDM.CNS + ", " + PessoaDM.DATA_NASCIMENTO + ", " + PessoaDM.SEXO +
                 ", " + ConsultaDM.LOCAL +
                 " FROM " + ConsultaDM.TABELA + " INNER JOIN " + PessoaDM.TABELA + " ON " + ConsultaDM.FKIDPESSOACONSULTA + " = " + PessoaDM.IDPESSOA + " WHERE "
                 + ConsultaDM.FKIDPESSOACONSULTA + " = " + "'" + idPessoa + "'" + " AND " + ConsultaDM.TURNO + " = " + "'" + sTurno + "'";
@@ -91,6 +91,7 @@ public class ConsultaController {
             String data = cursor.getString(cursor.getColumnIndexOrThrow(ConsultaDM.DATA));
             String turno = cursor.getString(cursor.getColumnIndexOrThrow(ConsultaDM.TURNO));
             String cpf = cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CPF));
+            String cns = cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.CNS));
             String dn = cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.DATA_NASCIMENTO));
             String sexo = cursor.getString(cursor.getColumnIndexOrThrow(PessoaDM.SEXO));
             String local = cursor.getString(cursor.getColumnIndexOrThrow(ConsultaDM.LOCAL));
@@ -100,6 +101,8 @@ public class ConsultaController {
             consulta.setTurno(turno);
             paciente.setCpf(cpf);
             consulta.setCpf(paciente.getCpf());
+            paciente.setCns(cns);
+            consulta.setCns(paciente.getCns());
             paciente.setData_nascimento(dn);
             consulta.setData_nascimento(paciente.getData_nascimento());
             paciente.setSexo(sexo);

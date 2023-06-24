@@ -33,7 +33,7 @@ import devandroid.evandro.esusprocedimentosesf.model.Pessoa;
 public class CadastroPacienteActivity extends AppCompatActivity {
 
     private static TextInputEditText edt_data_nascimento;
-    private TextInputEditText edt_cpf, edt_nome, edt_endereco, edt_Numero;
+    private TextInputEditText edt_cpf,edt_cns, edt_nome, edt_endereco, edt_Numero;
     private RadioGroup rg_sexo, rg_cor;
     private ImageView iv_data_nascimento;
     private Spinner sp_logradouro, sp_Bairro;
@@ -44,7 +44,7 @@ public class CadastroPacienteActivity extends AppCompatActivity {
     private Button btn_salvar_dados;
     private String sSexo;
     private boolean bSexo;
-    private String sCor;
+    private String sCor,sCpf,sCns;
     private boolean bCor;
 
     private ImageView ib_voltar;
@@ -76,6 +76,7 @@ public class CadastroPacienteActivity extends AppCompatActivity {
 
         ib_voltar = findViewById(R.id.ib_voltar);
         edt_cpf = findViewById(R.id.edt_cpf_endereco);
+        edt_cns = findViewById(R.id.edt_cns_endereco);
         edt_nome = findViewById(R.id.edt_nome_endereco);
         edt_data_nascimento = findViewById(R.id.edt_data_nascimento_endereco);
         edt_endereco = findViewById(R.id.edt_endereco);
@@ -109,10 +110,10 @@ public class CadastroPacienteActivity extends AppCompatActivity {
                 boolean feminino = R.id.rb_feminino == i;
 
                 if (masculino) {
-                    sSexo = "masculino";
+                    sSexo = AppUtil.MASCULINO;
                     bSexo = true;
                 } else if (feminino) {
-                    sSexo = "feminino";
+                    sSexo = AppUtil.FEMININO;
                     bSexo = true;
                 }
             }
@@ -128,15 +129,15 @@ public class CadastroPacienteActivity extends AppCompatActivity {
                 boolean pardo = R.id.rb_pardo == i;
 
                 if (branco) {
-                    sCor = "branco";
+                    sCor = AppUtil.BRANCA;
                     bCor = true;
                 }
                 if (preto) {
-                    sCor = "preto";
+                    sCor = AppUtil.PRETA;
                     bCor = true;
                 }
                 if (pardo) {
-                    sCor = "pardo";
+                    sCor =  AppUtil.PARDA;
                     bCor = true;
                 }
             }
@@ -218,7 +219,8 @@ public class CadastroPacienteActivity extends AppCompatActivity {
             if(validaDados()) {
                 Pessoa paciente = new Pessoa();
                 Endereco endereco = new Endereco();
-                paciente.setCpf(edt_cpf.getText().toString());
+                paciente.setCpf(sCpf);
+                paciente.setCns(sCns);
                 paciente.setNome(edt_nome.getText().toString());
                 paciente.setData_nascimento(edt_data_nascimento.getText().toString());
                 paciente.setSexo(sSexo);
@@ -255,10 +257,16 @@ public class CadastroPacienteActivity extends AppCompatActivity {
 
 
         boolean retorno = true;
-        if (TextUtils.isEmpty(edt_cpf.getText().toString())) {
-            edt_cpf.setError("*");
-            edt_cpf.requestFocus();
-            retorno = false;
+
+        if (!AppUtil.isCPF(edt_cpf.getText().toString().trim())) {
+            sCpf = "000.000.000-00";
+        }else {
+            sCpf = edt_cpf.getText().toString();
+        }
+        if (!AppUtil.isCns(edt_cns.getText().toString())) {
+            sCns = "000.0000.0000.0000";
+        }else {
+            sCns = edt_cns.getText().toString();
         }
         if (TextUtils.isEmpty(edt_nome.getText().toString())) {
             edt_nome.setError("*");

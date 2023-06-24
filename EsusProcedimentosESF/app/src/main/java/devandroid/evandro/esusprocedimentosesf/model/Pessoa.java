@@ -4,6 +4,7 @@ public class Pessoa {
 
     private int idPessoa;
     private String cpf;
+    private String cns;
     private String nome;
     private String data_nascimento;
     private String sexo;
@@ -11,6 +12,14 @@ public class Pessoa {
 
     private Endereco enderecoPaciente;
     private Consulta consultaPaciente;
+
+    public String getCns() {
+        return cns;
+    }
+
+    public void setCns(String cns) {
+        this.cns = cns;
+    }
 
     public Endereco getEnderecoPaciente() {
         return enderecoPaciente;

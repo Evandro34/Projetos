@@ -21,7 +21,7 @@ import devandroid.evandro.esusprocedimentosesf.fragments.TotalFragment;
 public class ListarProcedimentosActivity extends AppCompatActivity {
     private TabLayout tab_layout;
 
-    private ImageButton ib_Add,ib_voltar;
+    private ImageButton ib_Add,ib_voltar,ib_pdf;
 
     private ViewPager view_pager;
 
@@ -39,10 +39,10 @@ public class ListarProcedimentosActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         viewPagerAdapter.addFragment(new TesteFragment(), "TESTE");
-        viewPagerAdapter.addFragment(new ManhaFragment(), "Manhã");
-        viewPagerAdapter.addFragment(new TardeFragment(), "Tarde");
-        viewPagerAdapter.addFragment(new NoiteFragment(), "Noite");
-        viewPagerAdapter.addFragment(new TotalFragment(), "Total");
+        viewPagerAdapter.addFragment(new ManhaFragment(), "MANHÃ");
+        viewPagerAdapter.addFragment(new TardeFragment(), "TARDE");
+        viewPagerAdapter.addFragment(new NoiteFragment(), "NOITE");
+        viewPagerAdapter.addFragment(new TotalFragment(), "TOTAL");
 
         view_pager.setAdapter(viewPagerAdapter);
         tab_layout.setElevation(0);
@@ -53,7 +53,7 @@ public class ListarProcedimentosActivity extends AppCompatActivity {
 
         ib_Add = findViewById(R.id.ib_add);
         ib_voltar = findViewById(R.id.ib_voltar);
-
+        ib_pdf = findViewById(R.id.ib_pdf);
         TextView text_toolbar = findViewById(R.id.text_toolbar);
         text_toolbar.setText("PROCEDIMENTOS");
         text_toolbar.setTextSize(18);
@@ -72,6 +72,11 @@ public class ListarProcedimentosActivity extends AppCompatActivity {
         });
         ib_voltar.setOnClickListener(view -> {
             Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+        ib_pdf.setOnClickListener(view -> {
+            Intent intent = new Intent(this,pdfProcedimentosActivity.class);
             startActivity(intent);
             finish();
         });

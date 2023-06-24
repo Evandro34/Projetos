@@ -44,9 +44,9 @@ public class AppUtil {
     public static final String NOITE = "Noite";
 
 
-    public static final String MASCULINO = "M";
+    public static final String MASCULINO = "Masculino";
 
-    public static final String FEMININO = "F";
+    public static final String FEMININO = "Feminino";
 
     public static final String BRANCA = "Branca";
     public static final String PARDA = "Parda";
@@ -366,6 +366,22 @@ public class AppUtil {
         return retorno;
     }
 
+
+    public static boolean isCns(String s) {
+        if (s.matches("[1-2]\\d{10}00[0-1]\\d") || s.matches("[7-9]\\d{14}")) {
+            return somaPonderada(s) % 11 == 0;
+        }
+        return false;
+    }
+
+    private  static int somaPonderada(String s) {
+        char[] cs = s.toCharArray();
+        int soma = 0;
+        for (int i = 0; i < cs.length; i++) {
+            soma += Character.digit(cs[i], 10) * (15 - i);
+        }
+        return soma;
+    }
 
 
     

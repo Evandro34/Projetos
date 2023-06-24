@@ -27,7 +27,7 @@ public class ManhaAdapter  extends RecyclerView.Adapter<ManhaAdapter.MyViewHolde
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView  = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_procedimentos2,parent,false);
+        View itemView  = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_procedimentos3,parent,false);
         return new MyViewHolder(itemView) ;
     }
 
@@ -57,7 +57,7 @@ public class ManhaAdapter  extends RecyclerView.Adapter<ManhaAdapter.MyViewHolde
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextInputEditText tv_data,tv_turno,tv_cpf,
+       TextView tv_data,tv_turno,tv_cpf,tv_cns,
                 tv_data_nascimento,tv_sexo,tv_local,tv_procedimentos;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -66,6 +66,7 @@ public class ManhaAdapter  extends RecyclerView.Adapter<ManhaAdapter.MyViewHolde
             tv_data =itemView.findViewById(R.id.tv_data);
             tv_turno =itemView.findViewById(R.id.tv_turno);
             tv_cpf =itemView.findViewById(R.id.tv_cpf);
+            tv_cns=itemView.findViewById(R.id.tv_cns);
             tv_data_nascimento =itemView.findViewById(R.id.tv_data_nascimento);
             tv_sexo =itemView.findViewById(R.id.tv_sexo);
             tv_local =itemView.findViewById(R.id.tv_local);

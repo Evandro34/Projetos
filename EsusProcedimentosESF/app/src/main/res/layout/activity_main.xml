@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cor_principal"
+
     tools:context=".view.MainActivity">
 
     <ScrollView
@@ -26,19 +26,19 @@
 
             <android.widget.Button
                 android:id="@+id/btn_cad_procedimento"
-                style="@style/configButtonMain"
+                style="@style/btn_verde"
                 android:drawableLeft="@drawable/icc_add_proc_32"
                 android:text="   Procedimentos " />
 
             <android.widget.Button
                 android:id="@+id/btn_relatorio_pab"
-                style="@style/configButtonMain"
+                style="@style/btn_verde"
                 android:drawableLeft="@drawable/ic_relatorio_32"
                 android:text="   Relatório Pab   " />
 
             <android.widget.Button
                 android:id="@+id/btn_relatorio_bpa"
-                style="@style/configButtonMain"
+                style="@style/btn_verde"
                 android:drawableLeft="@drawable/ic_relatorio_32"
                 android:text="    Relatório Bpa "
 

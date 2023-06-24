@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.pdfProcedimentosActivity">
+
+    <android.widget.Button
+        android:id="@+id/btn_gerar_pdf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_btn_verde"
+        android:text="Gerar Pdf"
+        android:textAllCaps="false"
+        android:textColor="@color/cor_principal"
+        android:textSize="16sp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_pdf"
+        tools:listitem="@layout/item_procedimentos3"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

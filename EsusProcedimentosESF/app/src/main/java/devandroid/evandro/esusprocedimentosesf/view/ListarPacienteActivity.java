@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.shashank.sony.fancydialoglib.Animation;
+import com.shashank.sony.fancydialoglib.FancyAlertDialog;
+import com.tsuryo.swipeablerv.SwipeLeftRightCallback;
+import com.tsuryo.swipeablerv.SwipeableRecyclerView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -40,7 +45,7 @@ public class ListarPacienteActivity extends AppCompatActivity {
     private ImageView iv_data_nascimento;
     private ImageButton ib_add,ib_voltar;
     private Button btn_pesquisar;
-    private RecyclerView rv_paciente;
+    private SwipeableRecyclerView rv_paciente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,19 +82,36 @@ public class ListarPacienteActivity extends AppCompatActivity {
                 consultaList = getCpf(iet_nome.getText().toString(), iet_data_nascimento.getText().toString());
                 configRecyclerView();
             } else {
-                Toast.makeText(this,"Pessoa não encontrada adicione no ICONE VERMELHO COM MAIS",Toast.LENGTH_LONG).show();
-                ib_add.setActivated(true);
-                ib_add.setVisibility(View.VISIBLE);
-                ib_add.setOnClickListener(view1 -> {
-                    Intent intent = new Intent(this, CadastroPacienteActivity.class);
-                    startActivity(intent);
-                    finish();
-                });
+
+
+                FancyAlertDialog.Builder
+                        .with(this)
+                        .setTitle("PESSOA NÃO ENCONTRADA")
+                        .setBackgroundColor(Color.parseColor("#303F9F"))  // for @ColorRes use setBackgroundColorRes(R.color.colorvalue)
+                        .setMessage("REALIZAR NOVO CADASTRO ?")
+                        .setNegativeBtnText("NÃO")
+                        .setPositiveBtnBackground(Color.parseColor("#FF4081"))  // for @ColorRes use setPositiveBtnBackgroundRes(R.color.colorvalue)
+                        .setPositiveBtnText("SIM")
+                        .setNegativeBtnBackground(Color.parseColor("#FFA9A7A8"))  // for @ColorRes use setNegativeBtnBackgroundRes(R.color.colorvalue)
+                        .setAnimation(Animation.POP)
+                        .isCancellable(true)
+                        .setIcon(R.drawable.ic_add_32, View.VISIBLE)
+                        .onPositiveClicked(View -> Alerta())
+                        .onNegativeClicked(dialog -> Toast.makeText(ListarPacienteActivity.this, "Cancel", Toast.LENGTH_SHORT).show())
+                        .build()
+                        .show();
+
 
             }
 
 
         });
+    }
+
+    private void Alerta() {
+        Intent intent = new Intent(this, CadastroPacienteActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void iniciaComponente() {
@@ -143,10 +165,39 @@ public class ListarPacienteActivity extends AppCompatActivity {
 
     private void configRecyclerView() {
 
+
         rv_paciente.setLayoutManager(new LinearLayoutManager(this));
         rv_paciente.setHasFixedSize(true);
         pessoaAdapter = new PessoaAdapter(consultaList);
         rv_paciente.setAdapter(pessoaAdapter);
+
+
+        rv_paciente.setListener(new SwipeLeftRightCallback.Listener() {
+            @Override
+            public void onSwipedLeft(int position) {
+                int id =0;
+                Pessoa pessoa =consultaList.get(position);
+                id =pessoa.getIdPessoa();
+                Intent intent = new Intent(getBaseContext(),EditarPacienteActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void onSwipedRight(int position) {
+
+                int id =0;
+                Pessoa pessoa =consultaList.get(position);
+                id =pessoa.getIdPessoa();
+                Intent intent = new Intent(getBaseContext(),CadastroProcedimentosActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+
+
+            }
+        });
+
 
 
     }
@@ -168,4 +219,6 @@ public class ListarPacienteActivity extends AppCompatActivity {
 
         return consultas;
     }
+
+
 }

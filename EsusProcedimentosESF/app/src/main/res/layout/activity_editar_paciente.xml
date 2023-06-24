@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.EditarPacienteActivity">
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar_voltar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_cpf_endereco"
+                    style="@style/TextInputEditText"
+                    android:hint="CPF"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_cns_endereco"
+                    style="@style/TextInputEditText"
+                    android:hint="CNS"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_nome_endereco"
+                    style="@style/TextInputEditText"
+                    android:layout_marginTop="8dp"
+                    android:hint="Nome"
+
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="4">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_data_nascimento_endereco"
+                        style="@style/TextInputEditText"
+                        android:hint="Data Nascimento" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/iv_data_nascimento"
+                    style="@style/configImagemView"
+                    android:background="@color/verde_1200"
+
+                    app:srcCompat="@android:drawable/ic_menu_month" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_text2"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="sexo"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+
+
+                <RadioGroup
+                    android:id="@+id/rg_sexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_masculino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="masculino" />
+
+                    <RadioButton
+                        android:id="@+id/rb_feminino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="Feminino" />
+
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_text2"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cor"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+
+
+                <RadioGroup
+                    android:id="@+id/rg_cor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_branco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="branco" />
+
+                    <RadioButton
+                        android:id="@+id/rb_preto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="preto" />
+
+                    <RadioButton
+                        android:id="@+id/rb_pardo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="pardo" />
+
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <android.widget.Button
+                android:id="@+id/btn_atualizar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_btn_verde"
+                android:text="Atualizar Dados"
+                android:textAllCaps="false"
+                android:textColor="@color/cor_principal"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

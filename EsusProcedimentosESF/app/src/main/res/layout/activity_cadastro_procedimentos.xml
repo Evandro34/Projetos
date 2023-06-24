@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cor_principal"
     tools:context=".view.CadastroProcedimentosActivity">
 
     <include
@@ -21,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/bg_text2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include2">
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_edit"
+                android:background="@drawable/bg_text2"
                 android:orientation="vertical">
 
                 <TextView
@@ -115,6 +115,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_cpf"
+                    android:background="@drawable/bg_text2"
                     style="@style/configTextInputEditTextCadProc"
                     android:hint="CPF" />
 
@@ -131,6 +132,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_nome"
+
                     style="@style/configTextInputEditTextCadProc"
                     android:hint="Nome" />
 
@@ -147,6 +149,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_data_nascimento"
+
                     style="@style/configTextInputEditTextCadProc"
                     android:hint="Data Nascimento" />
 
@@ -172,7 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_edit"
+                android:background="@drawable/bg_text2"
                 android:orientation="vertical">
 
                 <TextView
@@ -180,6 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+
                     android:text="Local Atendimento"
                     android:textAlignment="center"
                     android:textSize="16sp" />
@@ -199,7 +203,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_edit"
+                android:background="@drawable/bg_text2"
                 android:orientation="vertical">
 
                 <TextView
@@ -214,7 +218,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_edit"
                     android:orientation="horizontal">
 
                     <CheckBox
@@ -238,7 +241,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_edit"
+
                     android:orientation="horizontal">
 
                     <CheckBox
@@ -262,7 +265,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_edit"
+
                     android:orientation="horizontal">
 
                     <CheckBox
@@ -286,7 +289,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_edit"
+
                     android:orientation="horizontal">
 
                     <CheckBox
@@ -310,7 +313,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_edit"
                     android:orientation="horizontal">
 
                     <CheckBox
@@ -335,7 +337,7 @@
 
             <android.widget.Button
                 android:id="@+id/btn_cadastrar_paciente"
-                style="@style/configButtonMain"
+                style="@style/btn_verde"
                 android:text="Cadastrar Procedimentos"
                 android:textColor="@color/cor_principal" />
 

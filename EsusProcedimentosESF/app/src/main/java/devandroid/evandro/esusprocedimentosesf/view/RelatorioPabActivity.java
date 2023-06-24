@@ -36,7 +36,7 @@ public class RelatorioPabActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_relatorio_pab);
+        setContentView(R.layout.activity_relatorio_pab2);
 
         pacienteController = new PessoaController(this);
         iniciaComponentes();
